@@ -31,10 +31,10 @@ const Navbar = () => {
           </div>
 
           <div className="right">
-            <div><Link to='/about' className='link'  onClick={handleShow}>About</Link></div>
-            <div><Link to='/services' className='link'  onClick={handleShow}>Services</Link></div>
-            <div><Link to='/projects' className='link'  onClick={handleShow}>Projects</Link></div>
-            <div><Link to='/contact' className='link' onClick={handleShow} >Contact</Link></div>
+              <div><Link to='/about' className='hover:text-red-600 cursor-pointer'>About</Link></div>
+              <div><Link to='/services' className='hover:text-red-600 cursor-pointer'>Services</Link></div>
+              <div><Link to='/projects' className='hover:text-red-600 cursor-pointer'>Projects</Link></div>
+              <div><Link to='/contact' className='hover:text-red-600 cursor-pointer'>Contact</Link></div>
           </div>
         </nav>
       </header>
