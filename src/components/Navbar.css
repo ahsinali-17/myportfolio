@@ -1,0 +1,27 @@
+.burger{
+  display:none;
+}
+.right{
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+}
+@media  screen and (max-width:690px){
+.burger{
+  display: block;
+
+}
+.right{
+  background-color: rgba(48, 48, 48, 0.888);
+  padding: 10px;
+  width: 30%;
+  display: none;
+  position: absolute;
+  right: 3rem;
+  top: 3.5rem;
+}
+.right div{
+ margin: 10px 0;
+}
+}

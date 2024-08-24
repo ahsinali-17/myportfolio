@@ -1,0 +1,136 @@
+.pro:hover {
+    box-shadow: 0 0 15px  rgba(256,256,256,0.5);
+  }
+  .h-pro:hover {
+      box-shadow: 0 0 15px  rgba(256,256,256,0.5);
+    }
+  
+  .pro:hover .shadoww{
+      box-shadow: 0 0 15px  rgba(0,0,0,0.8);
+    }
+    .h-pro:hover .shadoww{
+      box-shadow: 0 0 15px  rgba(0,0,0,0.8);
+    }
+   .pass{
+      width: 100%;
+      height: 50%;
+      background-image: url("./password-manager.png");
+      background-size: cover;
+   }
+   .connectify{
+    width: 100%;
+      height: 50%;
+      background-image: url("./connectify.jpeg");
+      background-size: cover;
+   }
+   .spotify{
+      width: 100%;
+      height: 50%;
+      background-image: url("./spotify.png");
+      background-size: cover;
+   }
+   .todolist{
+    width: 100%;
+    height: 50%;
+    background-image: url("./todo.jpeg");
+    background-size: cover;
+ }
+     
+   .ttt{
+      width: 100%;
+      height: 50%;
+      background-image: url("./ttt.png");
+      background-size: cover;
+   }
+   
+   .dailynews{
+    width: 100%;
+    height: 50%;
+    background-image: url("./dailynews.png");
+    background-size: cover;
+    
+  }
+  .dice-game{
+    width: 100%;
+    height: 50%;
+    background-image: url("./dice.png");
+    background-size: cover;
+    
+  }
+  .amazon{
+    width: 100%;
+    height: 50%;
+    background-image: url("./amazon.png");
+    background-size: cover;
+    
+  }  
+  
+  @media screen  and (max-width:600px){
+    .pass{
+      width: 100%;
+      height: 35%;
+      background-image: url("./password-manager.png");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+   }
+   .spotify{
+      width: 100%;
+      height: 35%;
+      background-image: url("./spotify.png");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+   }
+   .connectify{
+    width: 100%;
+    height: 35%;
+    background-image: url("./connectify.jpeg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+ }
+
+ .todo{
+  width: 100%;
+  height: 35%;
+  background-image: url("./todo.jpeg");
+  background-position: center;
+  background-size: cover;
+}
+
+     
+   .ttt{
+      width: 100%;
+      height: 35%;
+      background-image: url("./ttt.png");
+      background-position: center;
+      background-size: cover;
+   }
+   
+   .dailynews{
+    width: 100%;
+    height: 35%;
+    background-image: url("./dailynews.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+  }
+  .dice-game{
+    width: 100%;
+    height: 35%;
+    background-image: url("./dice.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+  }
+  .amazon{
+    width: 100%;
+    height: 35%;
+    background-image: url("./amazon.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }  
+  } 

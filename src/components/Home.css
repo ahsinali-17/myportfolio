@@ -1,0 +1,45 @@
+.cv:hover{
+  box-shadow: 0 0 10px 5px black;
+  font-size: 1rem;
+}
+
+@media screen and (max-width:820px) {
+  .first{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+  }
+  .leftSection{
+      min-width:90vw;
+      text-align: center;
+      padding: 0;
+      max-height: 50vh;
+      font-size: 0.8 rem;
+      line-height: 1 rem;
+  }
+  .rightSection{
+      min-width: 90vw;
+      max-height: 40vh;
+      text-align: center;
+      padding: 0;
+      font-size: 0.8 rem;
+      line-height: 1 rem;
+      display: flex;
+      justify-content: center;
+  }
+}
+
+@media screen and (max-width:500px) {
+
+  .rightSection{
+      min-width: 90vw;
+      max-height: 30vh;
+      text-align: center;
+      padding: 0;
+      font-size: 0.8 rem;
+      line-height: 1 rem;
+      display: flex;
+      justify-content: center;
+  }
+}
