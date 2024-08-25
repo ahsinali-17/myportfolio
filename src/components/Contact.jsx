@@ -11,7 +11,7 @@ const Contact = () => {
             </span>
             <span className="text-red-600 font-semibold mt-8">
               gmail: &nbsp;
-              <span className="text-xs text-white"> ahsinraj757@gmail.com</span>
+              <span className="text-xs text-white"> aahsin739@gmail.com</span>
             </span>
             <div className="links mt-12 flex gap-10">
               <a href="https://github.com/ahsinali-17" target="_blank">
