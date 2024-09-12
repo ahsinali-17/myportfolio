@@ -7,8 +7,9 @@ const Home = () => {
 
   React.useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Web Developer.', 'React Developer.'],
+      strings: ['Web App Developer.', 'MERN stack Developer.','Competent in Next.js.'],
       typeSpeed: 50,
+      loop: true,
     });
 
     return () => {
@@ -22,7 +23,7 @@ const Home = () => {
     <section className="first flex justify-around items-center mt-[10vh] min-h-[80vh]">
         <div className="leftSection w-[40%] p-12 px-16 text-xl">Hi! my name is <span
                 className='text-violet-400 text-4xl'>M.Ahsin Ali</span>
-            <div className='mt-2'>and i am a passionate<div className='text-violet-400 text-2xl lg:text-4xl mt-2'><span ref={el}></span>
+            <div className='mt-2'>and i am a passionate<div className='text-violet-400 text-2xl lg:text-3xl mt-2'><span ref={el}></span>
                 </div>
             </div>
             <div className='text-xs mt-4 text-red-600 text-center'>Crafting digital experiences that leave a lasting
