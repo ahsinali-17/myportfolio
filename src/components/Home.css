@@ -28,6 +28,9 @@
       display: flex;
       justify-content: center;
   }
+  .rightSection img{
+    object-fit: cover;
+  }
 }
 
 @media screen and (max-width:500px) {
@@ -41,5 +44,8 @@
       line-height: 1 rem;
       display: flex;
       justify-content: center;
+  }
+  .rightSection img{
+    object-fit: cover;
   }
 }
