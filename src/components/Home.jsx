@@ -7,7 +7,7 @@ const Home = () => {
 
   React.useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Web App Developer.', 'MERN stack Developer.','Competent in Next.js.'],
+      strings: ['Web App Developer.', 'MERNstack Developer.','Competent in Next.js.'],
       typeSpeed: 50,
       loop: true,
     });
@@ -21,9 +21,9 @@ const Home = () => {
   return (
     <main className='m-0 min-h-[90vh] text-white p-0  '>
     <section className="first flex justify-around items-center mt-[10vh] min-h-[80vh]">
-        <div className="leftSection w-[40%] p-12 px-16 text-xl">Hi! my name is <span
+        <div className="leftSection w-[40%] p-12 px-12 md:px-16 text-xl">Hi! my name is <span
                 className='text-violet-400 text-4xl'>M.Ahsin Ali</span>
-            <div className='mt-2'>and i am a passionate<div className='text-violet-400 text-2xl lg:text-3xl mt-2'><span ref={el}></span>
+            <div className='mt-2'>and i am a passionate<div className='text-violet-400 text-lg md:text-2xl lg:text-3xl mt-2'><span ref={el}></span>
                 </div>
             </div>
             <div className='text-xs mt-4 text-red-600 text-center'>Creating fast, responsive, and engaging web apps that inspire,<span className='flex mt-2 items-center justify-center'> one line of code at a time. &nbsp;
