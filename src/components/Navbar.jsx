@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="m-0 text-white h-[10vh] fixed top-0 w-full overflow-hidden">
+    <header className="m-0 text-white h-[10vh] fixed top-0 w-full">
       <nav className="flex px-12 justify-between items-center bg-violet-800 h-full w-screen">
         <div className="logo text-2xl cursor-pointer w-1/3">
           <Link
