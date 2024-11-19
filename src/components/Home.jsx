@@ -2,6 +2,9 @@ import React, { useRef } from 'react';
 import Typed from 'typed.js';
 import './Home.css'; 
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+
 const Home = () => {
   const el = useRef();
 
@@ -11,6 +14,8 @@ const Home = () => {
       typeSpeed: 50,
       loop: true,
     });
+
+    AOS.init({duration: 2000});
 
     return () => {
       typed.destroy();
@@ -27,12 +32,12 @@ const Home = () => {
                 </div>
             </div>
             <div className='text-xs mt-4 text-red-600 text-center'>Creating fast, responsive, and engaging web apps that inspire,<span className='flex mt-2 items-center justify-center'> one line of code at a time. &nbsp;
-                    <span className="text-xl">😁</span></span> </div>
+                    <span className="text-xl" data-aos="flip-up" data-aos-anchor-placement="top-bottom">😁</span></span> </div>
                     <div className="flex justify-center">
-                    <a href="./Resume.pdf" target="_blank"><button className="cv bg-red-600 text-white font-semibold text-sm p-2 rounded-lg mt-4 text-center cursor-pointer">Download CV</button></a> </div>
+                    <a href="./Resume.pdf" target="_blank" data-aos="zoom-in-right"><button className="cv bg-red-600 text-white font-semibold text-sm p-2 rounded-lg mt-4 text-center cursor-pointer">Download CV</button></a> </div>
         </div>
 
-        <div className="rightSection w-[40%]">
+        <div className="rightSection w-[40%]" data-aos="zoom-in-left">
             <img src="./bg.png" alt="coder" className='w-[100%]' />
         </div>
     </section>

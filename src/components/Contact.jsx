@@ -1,25 +1,33 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 
 const Contact = () => {
+
+  React.useEffect(() => {
+    AOS.init({duration: 2000});
+  }, []);
+
   return (
       <main className="m-0 pt-6 min-h-screen text-white p-0">
         <section className="second w-full mt-[10vh]">
           <h1 className="text-4xl font-semibold w-5/6 mx-auto mb-4">Contact Me</h1>
           <div className="flex flex-col items-center justify-center mt-6 min-h-[60vh] w-5/6 mx-auto">
-            <span className="font-light text-xl">
+            <span className="font-light text-xl" data-aos="zoom-in">
               "Ready to collaborate or have a question? Let's connect!"
             </span>
-            <span className="text-red-600 font-semibold mt-8">
+            <span className="text-red-600 font-semibold mt-8" data-aos="fade-right">
               gmail: &nbsp;
-              <span className="text-xs text-white"> aahsin739@gmail.com</span>
+              <span className="text-xs text-white" data-aos="fade-right"> aahsin739@gmail.com</span>
             </span>
             <div className="links mt-12 flex gap-10">
-              <a href="https://github.com/ahsinali-17" target="_blank">
+              <a href="https://github.com/ahsinali-17" target="_blank" data-aos="flip-right">
                 <img src="github.svg" alt="github" />
               </a>
               <a
                 href="https://www.linkedin.com/in/ahsin-ali-3a5135276/"
                 target="_blank"
+                data-aos="flip-left"
               >
                 <img src="linkedin.svg" alt="linkedin" />
               </a>

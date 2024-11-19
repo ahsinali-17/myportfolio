@@ -24,11 +24,12 @@ const Navbar = () => {
         <div className="logo text-2xl cursor-pointer w-1/3">
           <Link
           onClick={handleShow}
-            className="logopic hover:text-red-600"
+            className="logopic"
             to="home"
             smooth={true}
             duration={500}
             offset={-70}
+
           >
             Portfolio<span className="dot text-4xl text-red-600">.</span>
           </Link>

@@ -1,12 +1,19 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 
 const Services = () => {
+
+  React.useEffect(() => {
+    AOS.init({duration: 2000});
+  }, []);
+
   return (
     <main className="m-0 py-6 min-h-[100vh] text-white p-0">
     <section className="second w-full mt-[10vh] mb-6">
-      <h1 className="text-4xl font-semibold w-5/6 mx-auto mb-4">Services</h1>
+      <h1 className="text-4xl font-semibold w-5/6 mx-auto mb-4" data-aos="zoom-in-right">Services</h1>
       <div className="services flex flex-wrap items-center justify-center gap-8 w-full">
-        <div className="s.one flex flex-col items-center justify-center bg-gray-500 p-2 lg:p-6 mt-3 lg:w-2/5  min-h-[40vh] lg:min-h-[37vh] rounded-lg gap-8 w-5/6">
+        <div className="s.one flex flex-col items-center justify-center bg-gray-500 p-2 lg:p-6 mt-3 lg:w-2/5  min-h-[40vh] lg:min-h-[37vh] rounded-lg gap-8 w-5/6 -z-10" data-aos="fade-right">
           <img src="./data.png" alt="website" width="30px" height="30px" />
           <div className="text">
             <h1 className="text-2xl font-semibold text-center">
@@ -20,7 +27,7 @@ const Services = () => {
             </p> 
           </div>
         </div>
-        <div className="s.two flex flex-col items-center justify-center bg-gray-500 p-2 lg:p-6 mt-3 lg:w-2/5  min-h-[40vh] lg:min-h-[37vh] rounded-lg gap-8 w-5/6">
+        <div className="s.two flex flex-col items-center justify-center bg-gray-500 p-2 lg:p-6 mt-3 lg:w-2/5  min-h-[40vh] lg:min-h-[37vh] rounded-lg gap-8 w-5/6 -z-10" data-aos="fade-left">
           <img src="./web-design.png" alt="website"width="30px" height="30px" />
           <div className="text">
             <h1 className="text-2xl font-semibold text-center">
@@ -31,7 +38,7 @@ const Services = () => {
             </p>
           </div>
         </div>
-        <div className="s.three flex flex-col items-center justify-center bg-gray-500 p-2 lg:p-6 lg:w-2/5  min-h-[40vh] lg:min-h-[37vh] rounded-lg lg:gap-4 gap-8 w-5/6">
+        <div className="s.three flex flex-col items-center justify-center bg-gray-500 p-2 lg:p-6 lg:w-2/5  min-h-[40vh] lg:min-h-[37vh] rounded-lg lg:gap-4 gap-8 w-5/6 -z-10" data-aos="fade-right">
           <img src="./design.png" alt="website"width="30px" height="30px"/>
           <div className="text">
             <h1 className="text-2xl font-semibold text-center">
@@ -42,7 +49,7 @@ const Services = () => {
             </p>
           </div>
         </div>
-        <div className="s.three flex flex-col items-center justify-center bg-gray-500 p-2 lg:p-6 lg:w-2/5  min-h-[40vh] lg:min-h-[37vh] rounded-lg lg:gap-4 gap-8 w-5/6">
+        <div className="s.three flex flex-col items-center justify-center bg-gray-500 p-2 lg:p-6 lg:w-2/5  min-h-[40vh] lg:min-h-[37vh] rounded-lg lg:gap-4 gap-8 w-5/6 -z-10" data-aos="fade-left">
           <img src="./handshake.png" alt="website"width="30px" height="30px" />
           <div className="text">
             <h1 className="text-2xl font-semibold text-center">
