@@ -11,29 +11,9 @@
 }
 body {
     font-family: poppins, sans-serif;
-    background-color: rgb(30 27 75);
+    background-color: rgb(30, 27, 75); /*rgb(30 27 75)*/
 }
 
-.logopic:hover .dot{
-    color:white; 
-}
-
-.bg{
-    background-color: #3f3d56; 
-}
-
-.separator {
-    margin: 0rem 5rem;
-    position: relative;
-    top: 1.5rem;
-}
-
-.pseparator{
-    
-        margin: 0rem 5rem;
-        position: relative;
-        top: -1.5rem;
-}
 ::-webkit-scrollbar {
     width: 10px; 
 }

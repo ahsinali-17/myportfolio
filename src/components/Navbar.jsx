@@ -1,41 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-scroll";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const handleClick = () => {
-    const Links = document.querySelector(".right");
-    if (Links.style.display === "block") {
-      Links.style.display = "none";
-    } else {
-      Links.style.display = "block";
-    }
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
-  const handleShow = () => {
-    const Links = document.querySelector(".right");
-    if(Links.style.display === "block") 
-    Links.style.display = "none";
+  const closeMenu = () => {
+    setMenuOpen(false);
   };
 
   return (
+<<<<<<< HEAD
     <header className="m-0 text-white h-[10vh] fixed top-0 w-full z-30">
       <nav className="flex px-12 justify-between items-center bg-violet-800 h-full w-screen">
         <div className="logo text-2xl cursor-pointer w-1/3">
+=======
+    <header className="navbar-container">
+      <nav className="navbar">
+        {/* Logo */}
+        <div className="logo text-sm md:text-2xl">
+>>>>>>> d437a39 (updated)
           <Link
-          onClick={handleShow}
+            onClick={closeMenu}
             className="logopic"
             to="home"
             smooth={true}
             duration={500}
-            offset={-70}
-
+            offset={-100}
           >
-            Portfolio<span className="dot text-4xl text-red-600">.</span>
+            Portfolio<span className="dot">.</span>
           </Link>
         </div>
 
-        <div className="burger" onClick={handleClick}>
+        {/* Burger Icon */}
+        <div className="burger cursor-pointer" onClick={toggleMenu}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -68,52 +70,46 @@ const Navbar = () => {
           </svg>
         </div>
 
-        <div className="right">
-          <div>
-            <Link
-            onClick={handleShow}
-              to="about"
-              smooth={true}
-              duration={500}
-              className="hover:text-red-600 cursor-pointer"
+        {/* Navigation Links */}
+        <div className={`right ${menuOpen ? "open" : ""}`}>
+          {["about", "skills","experience", "projects", "contact"].map((section, index) => (
+            <div key={index} className="nav-item">
+              <Link
+                onClick={closeMenu}
+                to={section}
+                smooth={true}
+                duration={500}
+                offset={-100}
+                className="hover:text-red-600 cursor-pointer"
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </Link>
+            </div>
+          ))}
+          <div className="github2 block md:hidden">
+            <a
+              href="https://github.com/ahsinali-17"
+              target="_blank"
+              rel="noreferrer"
             >
-              About
-            </Link>
-          </div>
-          <div>
-            <Link
-            onClick={handleShow}
-              to="services"
-              smooth={true}
-              duration={500}
-              className="hover:text-red-600 cursor-pointer"
-            >
-              Services
-            </Link>
-          </div>
-          <div>
-            <Link
-            onClick={handleShow}
-              to="projects"
-              smooth={true}
-              duration={500}
-              className="hover:text-red-600 cursor-pointer"
-            >
-              Projects
-            </Link>
-          </div>
-          <div>
-            <Link
-            onClick={handleShow}
-              to="contact"
-              smooth={true}
-              duration={500}
-              className="hover:text-red-600 cursor-pointer"
-            >
-              Contact
-            </Link>
+              <button className="github-button">
+                Github Profile
+              </button>
+            </a>
           </div>
         </div>
+
+        <div className="github">
+            <a
+              href="https://github.com/ahsinali-17"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button className="github-button">
+                Github Profile
+              </button>
+            </a>
+          </div>
       </nav>
     </header>
   );

@@ -1,38 +1,74 @@
-import React from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
-const Contact = () => {
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
-  React.useEffect(() => {
-    AOS.init({duration: 2000});
-  }, []);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const serviceId = import.meta.env.VITE_SERVICE_ID;
+    const templateId =  import.meta.env.VITE_TEMPLATE_ID;
+    const userId = import.meta.env.VITE_PUBLIC_KEY; 
+    console.log(serviceId, templateId, userId);
+    setStatus("PENDING");
+    emailjs
+      .send(serviceId, templateId, formData, userId)
+      .then((response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        setStatus("SUCCESS");
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        console.error("FAILED...", error);
+        setStatus("FAILED");
+      });
+  };
 
   return (
-      <main className="m-0 pt-6 min-h-screen text-white p-0">
-        <section className="second w-full mt-[10vh]">
+    <main className="mb-6 min-h-[60vh] text-center0vh] text-white">
+      
+    <section className="sixth my-[10vh] min-h-[60vh]">
+
           <h1 className="text-4xl font-semibold w-5/6 mx-auto mb-4">Contact Me</h1>
-          <div className="flex flex-col items-center justify-center mt-6 min-h-[60vh] w-5/6 mx-auto">
-            <span className="font-light text-xl" data-aos="zoom-in">
-              "Ready to collaborate or have a question? Let's connect!"
-            </span>
-            <span className="text-red-600 font-semibold mt-8" data-aos="fade-right">
-              gmail: &nbsp;
-              <span className="text-xs text-white" data-aos="fade-right"> aahsin739@gmail.com</span>
-            </span>
-            <div className="links mt-12 flex gap-10">
-              <a href="https://github.com/ahsinali-17" target="_blank" data-aos="flip-right">
-                <img src="github.svg" alt="github" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/ahsin-ali-3a5135276/"
-                target="_blank"
-                data-aos="flip-left"
-              >
-                <img src="linkedin.svg" alt="linkedin" />
-              </a>
-            </div> 
-          </div>
+          <form className="flex flex-col items-center justify-center gap-3 mt-6 min-h-[50vh] w-5/6 mx-auto" onSubmit={handleSubmit}>
+           <input name="email" type="email" placeholder='Your Email*' className='bg-transparent placeholder-gray-400 border border-violet-400 text-white p-2 rounded-md w-full'  value={formData.email}
+        onChange={handleChange}
+        required/>
+           <input name="name" type="text" placeholder='Your Name*' className='bg-transparent placeholder-gray-400 border border-violet-400 text-white p-2 rounded-md w-full' value={formData.name}
+        onChange={handleChange}
+        required/>
+           <input name="subject" type="text" placeholder='Subject*' className='bg-transparent placeholder-gray-400 border border-violet-400 text-white p-2 rounded-md w-full'   value={formData.subject}
+        onChange={handleChange}
+        required/>
+            <textarea name="message" placeholder='Message*' rows={5} className='bg-transparent placeholder-gray-400 border border-violet-400 text-white p-2 rounded-md w-full'  value={formData.message}
+        onChange={handleChange}
+        required/>
+            <button className='bg-violet-400 hover:scale-110 hover:bg-violet-600 text-white font-semibold w-1/3 py-2 rounded-md' type="submit" disabled={status==='PENDING'? true : false}>Send</button>
+          </form>
+          {status === "SUCCESS" && (
+        <p className="text-green-400 mt-60] text-center">Message sent successfully!</p>
+      )}
+      {status === "FAILED" && (
+        <p className="text-red-400 mt-60] text-center">Failed to send message. Please try again.</p>
+      )}
         </section>
         <footer className="flex justify-center items-center bg-gray-500 absolute bottom-4 w-full">
           <span>
@@ -42,6 +78,6 @@ const Contact = () => {
         </footer>
       </main>
   );
-}
+};
 
-export default Contact;
+export default ContactForm;
