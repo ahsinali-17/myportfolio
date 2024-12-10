@@ -61,7 +61,7 @@ const Home = () => {
         > 
           <Tilt>
           <img
-            src="../images/me1.jpg"
+            src="images\\me1.jpg"
             alt="coder"
             className="rounded-full border-4 border-red-500 w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-contain"
           />
