@@ -12,11 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-<<<<<<< HEAD
-      strings: ['Web App Developer.', 'MERNstack Developer.','skilled in Next.js.'],
-=======
       strings: [...roles],
->>>>>>> d437a39 (updated)
       typeSpeed: 50,
       loop: true,
     });
