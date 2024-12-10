@@ -14,16 +14,10 @@ const Navbar = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <header className="m-0 text-white h-[10vh] fixed top-0 w-full z-30">
-      <nav className="flex px-12 justify-between items-center bg-violet-800 h-full w-screen">
-        <div className="logo text-2xl cursor-pointer w-1/3">
-=======
     <header className="navbar-container">
       <nav className="navbar">
         {/* Logo */}
         <div className="logo text-sm md:text-2xl">
->>>>>>> d437a39 (updated)
           <Link
             onClick={closeMenu}
             className="logopic"
