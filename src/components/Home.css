@@ -9,7 +9,7 @@
 }
 
 .rightSection img {
-  background: url('images/me1.jpg');
+  background: url('public/images/me1.jpg');
   background-size: cover;
   background-position: center;
   backdrop-filter: blur(5px);
