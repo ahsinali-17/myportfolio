@@ -19,7 +19,7 @@
   width: 100%;
 }
 
-/* Logo */
+/* Logo */ 
 .logo {
   text-align: center;
   cursor: pointer;
@@ -30,12 +30,12 @@
   transition: transform 0.5s ease;
 }
 
-.logopic:hover {
+.logo:hover .logopic {
   transform: rotateY(360deg);
   color: rgba(255, 0, 0, 0.6);
 }
 
-.logopic:hover .dot{
+.logo:hover .dot{
   color:white; 
 }
 
@@ -73,6 +73,7 @@
 
 .github{
   display: block;
+
 }
 .github2{
   display: none;

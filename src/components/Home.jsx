@@ -47,10 +47,10 @@ const Home = () => {
           </div>
           <div className="flex justify-center">
             <a href={`${resume}`} target="_blank" data-aos="zoom-in-right">
-              <button className="cv bg-red-600 text-white font-semibold text-sm p-2 rounded-full mt-4 text-center cursor-pointer">
+              <button className="cv border-2 border-red-500 rounded-full hover:font-bold hover:shadow-gray-600  shadow-inner text-center bg-transparent hover:bg-white text-blue-500 p-3 w-70 mx-auto mt-6">
                 Check Resume
               </button>
-            </a>
+            </a> 
           </div>
         </div>
 

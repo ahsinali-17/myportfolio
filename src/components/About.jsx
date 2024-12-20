@@ -11,7 +11,7 @@ const About = () => {
   }, []);
 
   return (
-    <main className="mb-6 min-h-[40vh] text-white p-0">
+    <main className="mb-6 min-h-[30vh] text-white p-0">
     <section className="second w-full h-full my-[10vh] flex flex-col justify-center gap-10">
    <h1 className="text-4xl font-semibold w-5/6 mx-auto" data-aos="fade-right">About Me!</h1>
    <p className='text-center w-5/6 mx-auto' data-aos="fade-left">Welcome to my portfolio! I'm <span className='font-semibold text-red-600'>Ahsin </span>, A passionate and dedicated web developer with a strong focus on building robust, responsive, and user-friendly web applications. After nearly two years of immersing myself in web development, I thrive on turning ideas into reality through innovative web solutions.</p>

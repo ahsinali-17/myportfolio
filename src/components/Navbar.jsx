@@ -66,7 +66,7 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <div className={`right ${menuOpen ? "open" : ""}`}>
-          {["about", "skills","experience", "projects", "contact"].map((section, index) => (
+          {["about", "skills", "projects","experience", "contact"].map((section, index) => (
             <div key={index} className="nav-item">
               <Link
                 onClick={closeMenu}
@@ -100,6 +100,7 @@ const Navbar = () => {
               rel="noreferrer"
             >
               <button className="github-button">
+               <img src="./github.svg" width={24} alt="github" className="inline-block mr-3" />
                 Github Profile
               </button>
             </a>
