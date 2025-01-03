@@ -18,16 +18,13 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setStatus("PENDING");
     const serviceId = import.meta.env.VITE_SERVICE_ID;
     const templateId =  import.meta.env.VITE_TEMPLATE_ID;
     const userId = import.meta.env.VITE_PUBLIC_KEY; 
-    console.log(serviceId, templateId, userId);
-    setStatus("PENDING");
     emailjs
       .send(serviceId, templateId, formData, userId)
       .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
         setStatus("SUCCESS");
         setFormData({
           name: "",
@@ -61,7 +58,7 @@ const ContactForm = () => {
             <textarea name="message" placeholder='Message*' rows={5} className='bg-transparent placeholder-gray-400 border border-violet-400 text-white p-2 rounded-md w-full'  value={formData.message}
         onChange={handleChange}
         required/>
-            <button className='bg-violet-400 hover:scale-110 hover:bg-violet-600 text-white font-semibold w-1/3 py-2 rounded-md' type="submit" disabled={status==='PENDING'? true : false}>Send</button>
+            <button className='bg-violet-400 hover:scale-110 hover:bg-violet-600 text-white font-semibold w-1/3 py-2 rounded-md' type="submit" disabled={status==='PENDING'? true : false}>{status==='PENDING'? "Sending..." :"Send"}</button>
           </form>
           {status === "SUCCESS" && (
         <p className="text-green-400 mt-60] text-center">Message sent successfully!</p>
