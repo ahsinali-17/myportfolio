@@ -249,14 +249,14 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Music Acadmey Web App",
+    title: "BackMyProjects",
     description:
-      "A simple Next JS frontend app which provides different music related courses and their details.",
+      "A crowdfunding Next.js app, featuring Razorpay payment gateway integration for secure transactions.",
     image:
-      "projects\\Music.png",
-    tags: ["Next Js", "Tailwind CSS", "Typescript", "aceternity ui"],
+      "projects\\BackMyProjects.png",
+    tags: ["Next Js", "Tailwind CSS", "MongoDb", "RazorPay"],
     category: "web app",
-    github: "https://github.com/ahsinali-17/Music-Academy",
+    github: "https://github.com/ahsinali-17/BackMyProjects",
   },
   {
     id: 5,
