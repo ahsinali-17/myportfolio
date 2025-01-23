@@ -239,7 +239,7 @@ export const projects = [
     description:
       "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
     image:
-      "projects\\stripeStore.jpeg",
+      "projects\\stripeStore.png",
     tags: [
       "React Js",
       "Firebase",
