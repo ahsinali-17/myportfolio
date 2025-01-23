@@ -213,6 +213,7 @@ export const projects = [
       "Node Js",
       "Express Js",
       "Redux - Toolkit",
+      "Redux-persist",
       "Tailwind CSS",
       "Multer",
       "NodeMailer",
@@ -223,6 +224,36 @@ export const projects = [
   },
   {
     id: 2,
+    title: "BackMyProjects",
+    description:
+      "A crowdfunding Next.js app, featuring Razorpay payment gateway integration for secure transactions.",
+    image:
+      "projects\\BackMyProjects.png",
+    tags: ["Next Js", "Tailwind CSS", "MongoDb", "RazorPay"],
+    category: "web app",
+    github: "https://github.com/ahsinali-17/BackMyProjects",
+  },
+  {
+    id: 3,
+    title: "StripeStore",
+    description:
+      "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
+    image:
+      "projects\\stripeStore.jpeg",
+    tags: [
+      "React Js",
+      "Firebase",
+      "Express Js",
+      "Tailwind CSS",
+      "Stripe",
+      "Redux-Toolkit",
+      "Redux-persist",
+    ],
+    category: "web app",
+    github: "https://github.com/ahsinali-17/StripeStore",
+  },
+  {
+    id: 4,
     title: "Password manager",
     description:
       "A react app which can remember provided passwords along with the username and website's URL. You can edit, delete and copy your saved data. Data is stored and retrieved on/from mongoDB and localstorage also....",
@@ -233,7 +264,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/Password-Manager",
   },
   {
-    id: 3,
+    id: 5,
     title: "Todo List App",
     description:
       "A Firebase + react app to keep record of your daily tasks(done or to be done!) with user authentication and history access.",
@@ -248,18 +279,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/TSK-000-42",
   },
   {
-    id: 4,
-    title: "BackMyProjects",
-    description:
-      "A crowdfunding Next.js app, featuring Razorpay payment gateway integration for secure transactions.",
-    image:
-      "projects\\BackMyProjects.png",
-    tags: ["Next Js", "Tailwind CSS", "MongoDb", "RazorPay"],
-    category: "web app",
-    github: "https://github.com/ahsinali-17/BackMyProjects",
-  },
-  {
-    id: 5,
+    id: 6,
     title: "Spotify Clone",
     description:
       "Spotify clone with a functional music player which also allows to access different albums to listen related songs.",
@@ -270,7 +290,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/Spotify-clone",
   },
   {
-    id: 6,
+    id: 7,
     title: "Weather App",
     description:
       "A React app which uses weather api to fetch weather updates from and display results based on city searches.",
@@ -281,7 +301,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/Weather-web-App",
   },
   {
-    id: 7,
+    id: 8,
     title: "dailyNEWS",
     description:
       "A react app which uses fetch current news and updated using news api and displays them categorically.",
@@ -292,7 +312,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/dailyNEWS",
   },
   {
-    id: 8,
+    id: 9,
     title: "Tic Tac Toe",
     description:
       " Tic tac toe game using REACT. Both player vs player and player vs computer modes are available using React router and undo feature is enabled using localStorage.",
