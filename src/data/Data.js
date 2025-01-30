@@ -11,7 +11,7 @@ export const Bio = {
     "I am a motivated and adaptable individual who values learning and tackling new challenges. Focused on delivering quality results, I approach tasks with a positive attitude and a growth mindset, aiming to contribute effectively and achieve meaningful outcomes.",
   github: "https://github.com/ahsinali-17",
   resume:
-    "https://drive.google.com/file/d/1LReeHgakC4ISYOkXGzQNrTJivNlyTqK2/view?usp=drive_link",
+    "https://drive.google.com/file/d/1CZXigm0ir-7L3FuXMkiLpMkB5Yz9xJAJ/view?usp=drive_link",
   linkedin: "https://www.linkedin.com/in/ahsin-ali-3a5135276/",
   twitter: "https://x.com/Ahsinali_17?t=Ebsaxzwff1yVlPHuMoc9jQ&s=09",
   insta: "https://www.instagram.com/ahsinali_17/",
