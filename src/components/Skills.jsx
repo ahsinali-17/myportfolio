@@ -17,7 +17,7 @@ const Services = () => {
       <div className="skills grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 w-full">
         {skills.map((skill, index) => {
           return (
-            <div key={index} className={`s.${index+1} flex flex-col items-center justify-evenly bg-gray-700 p-2 lg:py-6 lg:px-2 mt-3 mb-6 min-h-[20vh] w-5/6 xl:w-2/3 mx-auto rounded-lg gap-8`} data-aos={index%2 === 0 ?"fade-left":"fade-right"}>
+            <div key={index} className={`s.${index+1} flex flex-col items-center justify-start bg-gray-700 p-2 lg:py-6 lg:px-2 mt-3 mb-6 min-h-[20vh] w-5/6 xl:w-5/6 mx-auto rounded-lg gap-8`} data-aos={index%2 === 0 ?"fade-left":"fade-right"}>
            <h1 className='text-2xl text-center font-semibold mb-3'>{skill.title}</h1>
             <div className="skill grid grid-cols-3 gap-3 ">
               {skill.skills.map((item, index) => {

@@ -113,7 +113,7 @@ export const skills = [
       {
         name: "Postman",
         image:
-          "https://static-00.iconduck.com/assets.00/postman-icon-497x512-beb7sy75.png",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWeEbxr2jaJP6Y3GKedSkC-nwBiblIG5USaQ&s",
       },
     ],
   },
@@ -229,7 +229,6 @@ export const projects = [
     description:
       "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
     image:
-      "projects\\stripeStore.png",
       "projects\\stripeStore.png",
     tags: [
       "React Js",
