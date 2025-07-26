@@ -5,13 +5,13 @@ export const Bio = {
     "Web App. Developer",
     "React Developer",
     "Skillful in Next Js",
-    "Programmer",
+    "AI integration in Web Apps",
   ],
   description:
     "I am a motivated and adaptable individual who values learning and tackling new challenges. Focused on delivering quality results, I approach tasks with a positive attitude and a growth mindset, aiming to contribute effectively and achieve meaningful outcomes.",
   github: "https://github.com/ahsinali-17",
   resume:
-    "https://drive.google.com/file/d/1LReeHgakC4ISYOkXGzQNrTJivNlyTqK2/view?usp=drive_link",
+    "https://drive.google.com/file/d/1gIMeKN9pO7AI984PKcYxOpPtCU5KWU6s/view?usp=drive_link",
   linkedin: "https://www.linkedin.com/in/ahsin-ali-3a5135276/",
   twitter: "https://x.com/Ahsinali_17?t=Ebsaxzwff1yVlPHuMoc9jQ&s=09",
   insta: "https://www.instagram.com/ahsinali_17/",
@@ -122,6 +122,25 @@ export const skills = [
 export const experience = [
   {
     id: 0,
+    img: "exp_edu/blink.jpeg",
+    role: "Web Developer Intern",
+    company: "Blink Consolidate",
+    date: "April 2025 - July 2025",
+    desc: "Completed a remote internship at Blink Consolidate as a full stack web developer. As an intern, I built responsive UIs with Next.js, React, and Tailwind CSS. Created and connected REST APIs to backend and database for dynamic content and authentication. Handled routing, form interactions, and hosted complete applications on VPS.",
+    skills: [
+      "NextJS",
+      "ReactJS",
+      "PostgreSQL",
+      "NodeJS",
+      "ExpressJS",
+      "Tailwind CSS",
+      "Git",
+    ],
+    doc: "https://drive.google.com/file/d/1fzE4oHycK4rHI_aknOTmaR63Onf78FFv/view?usp=drive_link",
+  },
+
+  {
+    id: 1,
     img: "exp_edu//internee.png",
     role: "Frontend Developer Intern",
     company: "Internee.pk",
@@ -138,26 +157,6 @@ export const experience = [
     ],
     doc: "https://drive.google.com/file/d/1eiHMqYWBtTSQm34lPhQe398jYDMla5TY/view?usp=drive_link",
   },
-
-  {
-    id: 1,
-    img: "exp_edu//fiver.png",
-    role: "Web App Developer",
-    company: "Fiverr",
-    date: "Jan 2024 - present",
-    desc: "Freelance web developer on Fiverr, specializing in React.js to build responsive web interfaces and integrate APIs, delivering user-friendly and efficient web applications tailored to client needs.",
-    skills: [
-      "ReactJS",
-      "Redux - Toolkit",
-      "ExpressJS",
-      "NodeJS",
-      "MongoDB",
-      "Tailwind CSS",
-      "HTML",
-      "JavaScript",
-    ],
-    doc: "https://drive.google.com/file/d/1eiHMqYWBtTSQm34lPhQe398jYDMla5TY/view?usp=drive_link",
-  },
   
 ];
 
@@ -170,15 +169,6 @@ export const education = [
     grade: "3.64 CGPA",
     desc: "I am pursuing a Bachelor's degree in Computer Science and Engineering at the University of Engineering & Technology, Taxila, with a CGPA of 3.64/4.00 after four semesters. My coursework includes Data Structures, Algorithms, OOP, Databases, Operating Systems, and Computer Networks.",
     degree: "Bachelor of Science in Computer Science",
-  },
-  {
-    id: 1,
-    img: "exp_edu//scholars.jpg",
-    school: "The Scholars Science college, Wah Cantt",
-    date: "Apr 2020 - July 2022",
-    grade: "88.2%",
-    desc: "I completed my Pre-Engineering from The Scholars Science college, Wah Cantt, with Physics, Chemistry & Maths as my main courses.",
-    degree: "FSC - pre Engineering",
   },
 ];
 
@@ -239,7 +229,7 @@ export const projects = [
     description:
       "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
     image:
-      "projects\\stripeStore.jpeg",
+      "projects\\stripeStore.png",
     tags: [
       "React Js",
       "Firebase",

@@ -3,9 +3,6 @@
 }
 
 .rightSection img {
-  background: url('/public/images/me1.jpg');
-  background-size: cover;
-  background-position: center;
   backdrop-filter: blur(5px);
   border-radius: 50%;
   border: 4px solid #6d28d9;

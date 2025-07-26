@@ -70,7 +70,7 @@ const ContactForm = () => {
         <footer className="flex justify-center items-center bg-gray-500 absolute bottom-4 w-full">
           <span>
             <span className="text-red-600 font-semibold">AA</span>portfolio
-            &#169; 2024. All rights reserved.
+            &#169; 2025. All rights reserved.
           </span>
         </footer>
       </main>
