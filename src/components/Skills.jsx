@@ -12,8 +12,8 @@ const Services = () => {
   return (
     <main className="mb-6 min-h-[30vh] text-white p-0">
     <section className="third w-[90%] mx-auto my-[10vh] flex flex-col justify-center gap-12">
-      <h1 className="text-4xl font-semibold w-5/6 mx-auto" data-aos="zoom-in-right">Skills</h1>
-      <p className="text-center text-sm w-5/6 mx-auto" data-aos="fade-in">Here are some of the skills I have been working on for past 2 years...</p>
+      <h1 className="text-4xl font-semibold w-5/6 mx-auto" data-aos="zoom-in-right">Skills & Tools</h1>
+      <p className="text-center text-sm w-5/6 mx-auto" data-aos="fade-in">Here are some of the skills and tools I have developed and utilized over the journey...</p>
       <div className="skills grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 w-full">
         {skills.map((skill, index) => {
           return (
