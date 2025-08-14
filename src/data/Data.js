@@ -345,14 +345,14 @@ export const projects = [
   },
   {
     id: 10,
-    title: "Tic Tac Toe",
+    title: "Wordle-clone",
     description:
-      " Tic tac toe game using REACT. Both player vs player and player vs computer modes are available using React router and undo feature is enabled using localStorage.",
+      "Wordle-clone is a web-based word puzzle game built with React. Players have six attempts to guess a five-letter word, with feedback provided for each guess.",
     image:
-      "projects\\ttt.png",
-    tags: ["React Js", "Local Storage", "React Router", "Tailwind CSS"],
+      "projects\\wordle-clone.png",
+    tags: ["React Js", "Tailwind-CSS", "JavaScript"],
     category: "web app",
-    github: "https://github.com/ahsinali-17/tic-tac-toe",
+    github: "https://github.com/ahsinali-17/wordle-clone",
   },
 ];
 
