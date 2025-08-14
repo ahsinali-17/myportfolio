@@ -22,15 +22,14 @@ export const skills = [
   {
     title: "Frontend",
     skills: [
-      {
-        name: "React Js",
-        image:
-          "https://cdn.worldvectorlogo.com/logos/react-1.svg",
+       {
+        name: "HTML",
+        image: "https://www.w3.org/html/logo/badge/html5-badge-h-solo.png",
       },
       {
-        name: "Next Js",
+        name: "CSS",
         image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9uzErWz9EXqZDxZ5lP9aYpMz8eK6rr5X3w&s",
+          "https://coryrylan.com/assets/css-CfW5UZaa.svg",
       },
       {
         name: "JavaScript",
@@ -43,24 +42,29 @@ export const skills = [
           "https://cdn.worldvectorlogo.com/logos/typescript.svg",
       },
       {
+        name: "React Js",
+        image:
+          "https://cdn.worldvectorlogo.com/logos/react-1.svg",
+      },
+      {
+        name: "Next Js",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9uzErWz9EXqZDxZ5lP9aYpMz8eK6rr5X3w&s",
+      },
+      {
         name: "Tailwind CSS",
         image:
           "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png",
-      },
-       {
-        name: "HTML",
-        image: "https://www.w3.org/html/logo/badge/html5-badge-h-solo.png",
-      },
-      {
-        name: "CSS",
-        image:
-          "https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/css3-512.png",
       },
       {
         name: "Redux - Toolkit",
         image:
           "https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
       },
+      {
+        name: "motion - animation library",
+        image: "https://user-images.githubusercontent.com/7850794/164965509-2a8dc49e-2ed7-4243-a2c9-481b03bbc31a.png",
+      }
     ],
   },
   {
@@ -87,7 +91,7 @@ export const skills = [
       },
       {
         name: "Firebase",
-        image: "https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg",
+        image: "https://www.gstatic.com/devrel-devsite/prod/v80eb94e0352d656ad1e20abf6117cdec6c1343c7722ef10f52a1a3f77f1e58f7/firebase/images/touchicon-180.png",
       },
       {
         name: "Supabase",
@@ -118,7 +122,7 @@ export const skills = [
       {
         name: "Git",
         image:
-          "https://e7.pngegg.com/pngimages/713/558/png-clipart-computer-icons-pro-git-github-logo-text-logo-thumbnail.png",
+          "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
       },
       {
         name: "GitHub",
@@ -245,6 +249,24 @@ export const projects = [
   },
   {
     id: 3,
+    title: "Uber-clone",
+    description:
+      "Uber-clone is a modern ride-booking web app with real-time location tracking, user authentication, and responsive design.",
+    image:
+      "projects\\uber-clone.png",
+    tags: [
+      "React Js",
+      "Express Js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Socket.io",
+      "GoMaps api"
+    ],
+    category: "web app",
+    github: "https://github.com/ahsinali-17/uber-clone",
+  },
+  {
+    id: 4,
     title: "StripeStore",
     description:
       "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
@@ -263,7 +285,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/StripeStore",
   },
   {
-    id: 4,
+    id: 5,
     title: "Password manager",
     description:
       "A react app which can remember provided passwords along with the username and website's URL. You can edit, delete and copy your saved data. Data is stored and retrieved on/from mongoDB and localstorage also....",
@@ -274,7 +296,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/Password-Manager",
   },
   {
-    id: 5,
+    id: 6,
     title: "Todo List App",
     description:
       "A Firebase + react app to keep record of your daily tasks(done or to be done!) with user authentication and history access.",
@@ -289,7 +311,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/TSK-000-42",
   },
   {
-    id: 6,
+    id: 7,
     title: "Spotify Clone",
     description:
       "Spotify clone with a functional music player which also allows to access different albums to listen related songs.",
@@ -300,7 +322,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/Spotify-clone",
   },
   {
-    id: 7,
+    id: 8,
     title: "Weather App",
     description:
       "A React app which uses weather api to fetch weather updates from and display results based on city searches.",
@@ -311,7 +333,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/Weather-web-App",
   },
   {
-    id: 8,
+    id: 9,
     title: "dailyNEWS",
     description:
       "A react app which uses fetch current news and updated using news api and displays them categorically.",
@@ -322,7 +344,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/dailyNEWS",
   },
   {
-    id: 9,
+    id: 10,
     title: "Tic Tac Toe",
     description:
       " Tic tac toe game using REACT. Both player vs player and player vs computer modes are available using React router and undo feature is enabled using localStorage.",
