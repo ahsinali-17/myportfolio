@@ -282,7 +282,7 @@ export const projects = [
       "Redux-persist",
     ],
     category: "web app",
-    github: "https://github.com/ahsinali-17/StripeStore",
+    github: "https://stripe-store-lake.vercel.app/",
   },
   {
     id: 5,
