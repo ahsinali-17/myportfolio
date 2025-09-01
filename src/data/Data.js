@@ -62,7 +62,7 @@ export const skills = [
           "https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
       },
       {
-        name: "motion - animation library",
+        name: "motion-animation lib.",
         image: "https://user-images.githubusercontent.com/7850794/164965509-2a8dc49e-2ed7-4243-a2c9-481b03bbc31a.png",
       }
     ],
