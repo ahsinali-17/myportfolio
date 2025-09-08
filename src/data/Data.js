@@ -212,7 +212,7 @@ export const projects = [
       "zod"
     ],
     category: "web app",
-    github: "https://github.com/ahsinali-17/Employeed",
+    github: "https://employeed.vercel.app/",
   },
   {
     id: 1,
