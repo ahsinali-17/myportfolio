@@ -22,49 +22,60 @@ export const skills = [
   {
     title: "Frontend",
     skills: [
-       {
+      {
         name: "HTML",
         image: "https://www.w3.org/html/logo/badge/html5-badge-h-solo.png",
+        skillLevel: 95,
+        skillExperience: "2+ years",
       },
       {
         name: "CSS",
-        image:
-          "https://coryrylan.com/assets/css-CfW5UZaa.svg",
+        image: "https://coryrylan.com/assets/css-CfW5UZaa.svg",
+        skillLevel: 90,
+        skillExperience: "2+ years",
       },
       {
         name: "JavaScript",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+        skillLevel: 85,
+        skillExperience: "2 years",
       },
       {
         name: "TypeScript",
-        image:
-          "https://cdn.worldvectorlogo.com/logos/typescript.svg",
+        image: "https://cdn.worldvectorlogo.com/logos/typescript.svg",
+        skillLevel: 70,
+        skillExperience: "1 year",
       },
       {
         name: "React Js",
-        image:
-          "https://cdn.worldvectorlogo.com/logos/react-1.svg",
+        image: "https://cdn.worldvectorlogo.com/logos/react-1.svg",
+        skillLevel: 90,
+        skillExperience: "2 years",
       },
       {
         name: "Next Js",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9uzErWz9EXqZDxZ5lP9aYpMz8eK6rr5X3w&s",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9uzErWz9EXqZDxZ5lP9aYpMz8eK6rr5X3w&s",
+        skillLevel: 80,
+        skillExperience: "1.5 years",
       },
       {
         name: "Tailwind CSS",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png",
+        skillLevel: 90,
+        skillExperience: "2 years",
       },
       {
         name: "Redux - Toolkit",
-        image:
-          "https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
+        image: "https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
+        skillLevel: 85,
+        skillExperience: "1.5 years",
       },
       {
         name: "motion-animation lib.",
         image: "https://user-images.githubusercontent.com/7850794/164965509-2a8dc49e-2ed7-4243-a2c9-481b03bbc31a.png",
-      }
+        skillLevel: 75,
+        skillExperience: "1 year",
+      },
     ],
   },
   {
@@ -73,71 +84,85 @@ export const skills = [
       {
         name: "Node Js",
         image: "https://nodejs.org/static/images/logo.svg",
+        skillLevel: 85,
+        skillExperience: "2 years",
       },
       {
         name: "Express Js",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7S33Oq2FeRbyBBA6l1q8PwLVa3SzaONO-9Q&s",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7S33Oq2FeRbyBBA6l1q8PwLVa3SzaONO-9Q&s",
+        skillLevel: 80,
+        skillExperience: "2 years",
       },
-      
       {
         name: "Postgresql",
         image: "https://www.postgresql.org/media/img/about/press/elephant.png",
+        skillLevel: 70,
+        skillExperience: "1 year",
       },
       {
         name: "MongoDB",
-        image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
+        image: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
+        skillLevel: 85,
+        skillExperience: "2 years",
       },
       {
         name: "Firebase",
         image: "https://www.gstatic.com/devrel-devsite/prod/v80eb94e0352d656ad1e20abf6117cdec6c1343c7722ef10f52a1a3f77f1e58f7/firebase/images/touchicon-180.png",
+        skillLevel: 80,
+        skillExperience: "1.5 years",
       },
       {
         name: "Supabase",
-        image:
-          "https://images.seeklogo.com/logo-png/43/1/supabase-logo-png_seeklogo-435677.png",
+        image: "https://images.seeklogo.com/logo-png/43/1/supabase-logo-png_seeklogo-435677.png",
+        skillLevel: 75,
+        skillExperience: "1 year",
       },
       {
         name: "Stripe",
-        image:
-          "https://www.citypng.com/public/uploads/preview/hd-stripe-official-logo-png-701751694777755j0aa3puxte.png",
+        image: "https://www.citypng.com/public/uploads/preview/hd-stripe-official-logo-png-701751694777755j0aa3puxte.png",
+        skillLevel: 70,
+        skillExperience: "1 year",
       },
       {
         name: "Next Js",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9uzErWz9EXqZDxZ5lP9aYpMz8eK6rr5X3w&s",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9uzErWz9EXqZDxZ5lP9aYpMz8eK6rr5X3w&s",
+        skillLevel: 80,
+        skillExperience: "1.5 years",
       },
       {
         name: "Socket.io",
-        image:
-          "https://avatars.githubusercontent.com/u/10566080?v=4",
+        image: "https://avatars.githubusercontent.com/u/10566080?v=4",
+        skillLevel: 70,
+        skillExperience: "1 year",
       },
     ],
   },
-  
   {
     title: "Other Tools",
     skills: [
       {
         name: "Git",
-        image:
-          "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
+        image: "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
+        skillLevel: 90,
+        skillExperience: "2 years",
       },
       {
         name: "GitHub",
-        image:
-          "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+        image: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+        skillLevel: 90,
+        skillExperience: "2 years",
       },
       {
         name: "VS Code",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
+        skillLevel: 95,
+        skillExperience: "2+ years",
       },
       {
         name: "Postman",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWeEbxr2jaJP6Y3GKedSkC-nwBiblIG5USaQ&s",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWeEbxr2jaJP6Y3GKedSkC-nwBiblIG5USaQ&s",
+        skillLevel: 85,
+        skillExperience: "1.5 years",
       },
     ],
   },
@@ -202,157 +227,133 @@ export const projects = [
     title: "Employeed",
     description:
       "A full stack job portal app that enables users to search and apply for job openings, featuring a responsive UI, filterable listings, and an application drawer built using supabase, clerk, React and shadcn.",
-    image:
-      "projects\\employeed.PNG",
-    tags: [
-      "React Js",
-      "Supabase",
-      "Clerk",
-      "Shadcn",
-      "zod"
-    ],
+    image: "projects\\employeed.PNG",
+    tags: ["React Js", "Supabase", "Clerk", "Shadcn", "zod"],
     category: "web app",
     github: "https://employeed.vercel.app/",
+    features: ["Job search", "Filterable listings", "User authentication", "Application management"],
+    challenges: "Integrating Supabase with Clerk for authentication and handling dynamic queries efficiently.",
+    duration: "1.5 months",
   },
   {
     id: 1,
     title: "connectify",
     description:
       "Built a modern, feature-rich social media platform using MERN. The app includes functionalities such as user authentication, profile management, content creation (posts, images, and videos) and interactive features like likes, comments, add friend and many more With a clean and responsive UI",
-    image:
-      "projects\\connectify.jpeg",
-    tags: [
-      "React Js",
-      "MongoDb",
-      "Node Js",
-      "Express Js",
-      "Redux - Toolkit",
-      "Redux-persist",
-      "Tailwind CSS",
-      "Multer",
-      "NodeMailer",
-    ],
+    image: "projects\\connectify.jpeg",
+    tags: ["React Js", "MongoDb", "Node Js", "Express Js", "Redux - Toolkit", "Redux-persist", "Tailwind CSS", "Multer", "NodeMailer"],
     category: "web app",
     github: "https://github.com/ahsinali-17/connectify",
-    
+    features: ["User authentication", "Profile management", "Post creation", "Media uploads", "Likes & comments", "Friend system"],
+    challenges: "Optimizing state management with Redux-persist and handling media uploads securely.",
+    duration: "2 months",
   },
   {
     id: 2,
     title: "BackMyProjects",
-    description:
-      "A crowdfunding Next.js app, featuring Razorpay payment gateway integration for secure transactions.",
-    image:
-      "projects\\BackMyProjects.png",
+    description: "A crowdfunding Next.js app, featuring Razorpay payment gateway integration for secure transactions.",
+    image: "projects\\BackMyProjects.png",
     tags: ["Next Js", "Tailwind CSS", "MongoDb", "RazorPay"],
     category: "web app",
     github: "https://github.com/ahsinali-17/BackMyProjects",
+    features: ["Project listings", "Payment gateway integration", "Responsive design"],
+    challenges: "Integrating Razorpay with Next.js API routes and ensuring secure transactions.",
+    duration: "1 month",
   },
   {
     id: 3,
     title: "Uber-clone",
-    description:
-      "Uber-clone is a modern ride-booking web app with real-time location tracking, user authentication, and responsive design.",
-    image:
-      "projects\\uber-clone.png",
-    tags: [
-      "React Js",
-      "Express Js",
-      "MongoDB",
-      "Tailwind CSS",
-      "Socket.io",
-      "GoMaps api"
-    ],
+    description: "Uber-clone is a modern ride-booking web app with real-time location tracking, user authentication, and responsive design.",
+    image: "projects\\uber-clone.png",
+    tags: ["React Js", "Express Js", "MongoDB", "Tailwind CSS", "Socket.io", "GoMaps api"],
     category: "web app",
     github: "https://github.com/ahsinali-17/uber-clone",
+    features: ["Real-time ride booking", "Location tracking", "Authentication", "Responsive UI"],
+    challenges: "Implementing real-time ride updates with Socket.io and integrating maps API effectively.",
+    duration: "2 months",
   },
   {
     id: 4,
     title: "StripeStore",
-    description:
-      "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
-    image:
-      "projects\\stripeStore.png",
-    tags: [
-      "React Js",
-      "Firebase",
-      "Express Js",
-      "Tailwind CSS",
-      "Stripe",
-      "Redux-Toolkit",
-      "Redux-persist",
-    ],
+    description: "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
+    image: "projects\\stripeStore.png",
+    tags: ["React Js", "Firebase", "Express Js", "Tailwind CSS", "Stripe", "Redux-Toolkit", "Redux-persist"],
     category: "web app",
     github: "https://stripe-store-lake.vercel.app/",
+    features: ["Stripe payments", "User authentication", "Product management", "Cart & checkout"],
+    challenges: "Integrating Stripe securely with Firebase authentication and managing cart state with Redux.",
+    duration: "1.5 months",
   },
   {
     id: 5,
     title: "Password manager",
-    description:
-      "A react app which can remember provided passwords along with the username and website's URL. You can edit, delete and copy your saved data. Data is stored and retrieved on/from mongoDB and localstorage also....",
-    image:
-      "projects\\password-manager.png",
+    description: "A react app which can remember provided passwords along with the username and website's URL...",
+    image: "projects\\password-manager.png",
     tags: ["React Js", "MongoDb", "Node Js", "Express Js", "Tailwind CSS"],
     category: "web app",
     github: "https://github.com/ahsinali-17/Password-Manager",
+    features: ["Save credentials", "Edit & delete", "Copy password", "MongoDB storage"],
+    challenges: "Ensuring secure storage and retrieval of credentials, handling encryption.",
+    duration: "3 weeks",
   },
   {
     id: 6,
     title: "Todo List App",
-    description:
-      "A Firebase + react app to keep record of your daily tasks(done or to be done!) with user authentication and history access.",
-    image:
-      "projects\\todo.jpeg",
-    tags: [
-      "React Js",
-      "Firebase",
-      "Tailwind CSS",
-    ],
+    description: "A Firebase + react app to keep record of your daily tasks with user authentication and history access.",
+    image: "projects\\todo.jpeg",
+    tags: ["React Js", "Firebase", "Tailwind CSS"],
     category: "web app",
     github: "https://github.com/ahsinali-17/TSK-000-42",
+    features: ["Task management", "User authentication", "Task history"],
+    challenges: "Implementing Firebase authentication and syncing tasks in real time.",
+    duration: "3 weeks",
   },
   {
     id: 7,
     title: "Spotify Clone",
-    description:
-      "Spotify clone with a functional music player which also allows to access different albums to listen related songs.",
-    image:
-      "projects\\spotify.png",
+    description: "Spotify clone with a functional music player...",
+    image: "projects\\spotify.png",
     tags: ["HTML", "CSS", "JavaScript"],
     category: "website",
     github: "https://github.com/ahsinali-17/Spotify-clone",
+    features: ["Music player", "Album browsing", "Responsive design"],
+    challenges: "Handling audio playback and managing UI interactions with vanilla JS.",
+    duration: "2 weeks",
   },
   {
     id: 8,
     title: "Weather App",
-    description:
-      "A React app which uses weather api to fetch weather updates from and display results based on city searches.",
-    image:
-      "projects\\weather.jpg",
+    description: "A React app which uses weather api to fetch weather updates.",
+    image: "projects\\weather.jpg",
     tags: ["React JS", "JavaScript", "RESTful api", "Tailwind CSS"],
     category: "Web app",
     github: "https://github.com/ahsinali-17/Weather-web-App",
+    features: ["City search", "Weather display", "API integration"],
+    challenges: "Managing asynchronous API calls and error handling.",
+    duration: "2 weeks",
   },
   {
     id: 9,
     title: "dailyNEWS",
-    description:
-      "A react app which uses fetch current news and updated using news api and displays them categorically.",
-    image:
-      "projects\\dailynews.png",
-    tags: ["React Js","React router dom", "RESTful api",],
+    description: "A react app which fetches current news using news api and displays them categorically.",
+    image: "projects\\dailynews.png",
+    tags: ["React Js", "React router dom", "RESTful api"],
     category: "web app",
     github: "https://github.com/ahsinali-17/dailyNEWS",
+    features: ["News categories", "API integration", "Responsive design"],
+    challenges: "Fetching dynamic content and implementing smooth navigation.",
+    duration: "2 weeks",
   },
   {
     id: 10,
     title: "Wordle-clone",
-    description:
-      "Wordle-clone is a web-based word puzzle game built with React. Players have six attempts to guess a five-letter word, with feedback provided for each guess.",
-    image:
-      "projects\\wordle-clone.png",
+    description: "Wordle-clone is a web-based word puzzle game built with React...",
+    image: "projects\\wordle-clone.png",
     tags: ["React Js", "Tailwind-CSS", "JavaScript"],
     category: "web app",
     github: "https://github.com/ahsinali-17/wordle-clone",
+    features: ["Word puzzle gameplay", "Feedback system", "Responsive design"],
+    challenges: "Managing game logic and providing feedback efficiently.",
+    duration: "1 week",
   },
 ];
-

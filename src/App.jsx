@@ -8,7 +8,6 @@ import Project from './components/Project'
 import Contact from './components/Contact'
 import BgAnimation from './components/HeroBgAnimation'
 import Timeline from './components/Timeline'
-import './App.css'
 
 const App = () => {
   return (
