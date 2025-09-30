@@ -230,8 +230,8 @@ export const education = [
     img: "exp_edu//uet.jpg",
     school: "University Of Engineering & Technology, Taxila",
     date: "Oct 2022 - present",
-    grade: "3.64 CGPA",
-    desc: "I am pursuing a Bachelor's degree in Computer Science and Engineering at the University of Engineering & Technology, Taxila, with a CGPA of 3.64/4.00 after four semesters. My coursework includes Data Structures, Algorithms, OOP, Databases, Operating Systems, and Computer Networks.",
+    grade: "3.62 CGPA",
+    desc: "I am pursuing a Bachelor's degree in Computer Science and Engineering at the University of Engineering & Technology, Taxila, with a CGPA of 3.62/4.00 after six semesters. My coursework includes Data Structures, Algorithms, OOP, Databases, Operating Systems, Artificial Neural Networks, Compiler Construction, and Computer Networks.",
     degree: "Bachelor of Science in Computer Science",
   },
 ];
