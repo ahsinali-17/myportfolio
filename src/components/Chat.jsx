@@ -77,7 +77,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="chat flex flex-col h-screen relative z-0 bg-[#6d28d9]">
+    <div className="chat flex flex-col w-screen overflow-hidden h-screen relative z-0 bg-[#6d28d9]">
       <BgAnimation/>
       {/* Header with Logo and Reset Button */}
       <div className="flex justify-between items-center px-6 py-4 fixed w-full top-0 bg-[#6d28d9] z-10">

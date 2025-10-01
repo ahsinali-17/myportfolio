@@ -1,23 +1,45 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import { Bio, skills, education, experience, projects } from "../data/Data.js";
+// Lazy imports
+let GoogleGenerativeAI = null;
+let portfolioData = null;
 
-// Create the context from Data.js
-const systemPrompt = `You are an AI assistant for ${Bio.name}'s portfolio website. You should ONLY answer questions related to Ahsin Ali's professional background, education, skills, projects, and work experience based on the following data:
+// Dynamic imports for better performance
+const loadDependencies = async () => {
+  if (!GoogleGenerativeAI) {
+    const { GoogleGenerativeAI: GAI } = await import("@google/generative-ai");
+    GoogleGenerativeAI = GAI;
+  }
+  
+  if (!portfolioData) {
+    const data = await import("../data/Data.js");
+    portfolioData = {
+      Bio: data.Bio,
+      skills: data.skills,
+      education: data.education,
+      experience: data.experience,
+      projects: data.projects
+    };
+  }
+  
+  return { GoogleGenerativeAI, portfolioData };
+};
+
+// Create system prompt dynamically
+const createSystemPrompt = (data) => `You are an AI assistant for ${data.Bio.name}'s portfolio website. You should ONLY answer questions related to Ahsin Ali's professional background, education, skills, projects, and work experience based on the following data:
 
 PERSONAL INFO:
-${JSON.stringify(Bio, null, 2)}
+${JSON.stringify(data.Bio, null, 2)}
 
 SKILLS:
-${JSON.stringify(skills, null, 2)}
+${JSON.stringify(data.skills, null, 2)}
 
 EDUCATION:
-${JSON.stringify(education, null, 2)}
+${JSON.stringify(data.education, null, 2)}
 
 WORK EXPERIENCE:
-${JSON.stringify(experience, null, 2)}
+${JSON.stringify(data.experience, null, 2)}
 
 PROJECTS:
-${JSON.stringify(projects, null, 2)}
+${JSON.stringify(data.projects, null, 2)}
 
 INSTRUCTIONS:
 - Answer questions about Ahsin Ali's background, skills, education, projects, and professional experience
@@ -27,19 +49,26 @@ INSTRUCTIONS:
 - Give selective answers based on the data provided. Dont tell about the whole section if they ask about a specific part. For example, if you're asked, where i live, keep it to the point and say Wah cantt,Pakistan. Then ask if they want more information. Dont tell them about the time zone, it is not relevant. If you don't know the answer, say "I'm not sure about that."
 - You can suggest related questions about his work or skills`;
 
-// Initialize the Gemini AI
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ 
-      model: "gemini-2.0-flash",
-      systemInstruction: systemPrompt
-});
+// Initialize the Gemini AI lazily
+let genAI = null;
+let model = null;
 
 // Chat session management
 let chatSession = null;
 
 // Initialize chat session
-const initializeChatSession = () => {
+const initializeChatSession = async () => {
   if (!chatSession) {
+    const { GoogleGenerativeAI, portfolioData } = await loadDependencies();
+    
+    if (!genAI) {
+      genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+      model = genAI.getGenerativeModel({ 
+        model: "gemini-2.0-flash",
+        systemInstruction: createSystemPrompt(portfolioData)
+      });
+    }
+    
     chatSession = model.startChat({
       history: [
         {
@@ -57,9 +86,9 @@ const initializeChatSession = () => {
 };
 
 // Reset chat session (useful for new conversations)
-export const resetChatSession = () => {
+export const resetChatSession = async () => {
   chatSession = null;
-  return initializeChatSession();
+  return await initializeChatSession();
 };
 
 // Get chat history for persistence
@@ -68,21 +97,29 @@ export const resetChatSession = () => {
 // };
 
 // Restore chat session from history
-export const restoreChatSession = (history) => {
+export const restoreChatSession = async (history) => {
+  const { GoogleGenerativeAI, portfolioData } = await loadDependencies();
+  
+  if (!genAI) {
+    genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+    model = genAI.getGenerativeModel({ 
+      model: "gemini-2.0-flash",
+      systemInstruction: createSystemPrompt(portfolioData)
+    });
+  }
+  
   chatSession = model.startChat({ history });
   return chatSession;
 };
 
 export const askAboutMe = async (question) => {
   try {
-    const chat = initializeChatSession();
+    const chat = await initializeChatSession();
     const result = await chat.sendMessage(question);
     const response = result.response.text();
     
     return response;
   } catch (error) {
-    console.error("Error with Gemini API:", error);
-    console.error("Full error details:", error.message);
     return "Sorry, I'm having trouble connecting right now. Please try again later.";
   }
 };
