@@ -56,7 +56,7 @@ const Home = () => {
 
         {/* Right Section */}
         <div
-          className="rightSection flex justify-center items-center w-[90%] lg:w-[40%] my-8 lg:my-0 max-h-[30vh] lg:max-h-full p-0 "
+          className="rightSection flex justify-center items-center w-[90%] lg:w-[40%] my-8 lg:my-0 max-h-[30vh] lg:max-h-full p-0"
           data-aos="zoom-in-left"
         > 
           <Tilt>
