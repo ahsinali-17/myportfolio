@@ -248,7 +248,7 @@ export const projects = [
     github: "https://employeed.vercel.app/",
     features: ["Job search", "Filterable listings", "User authentication", "Application management"],
     challenges: "Integrating Supabase with Clerk for authentication and handling dynamic queries efficiently.",
-    duration: "1.5 months",
+    duration: "6 weeks",
   },
   {
     id: 1,
@@ -261,19 +261,19 @@ export const projects = [
     github: "https://github.com/ahsinali-17/connectify",
     features: ["User authentication", "Profile management", "Post creation", "Media uploads", "Likes & comments", "Friend system"],
     challenges: "Optimizing state management with Redux-persist and handling media uploads securely.",
-    duration: "2 months",
+    duration: "1 month",
   },
   {
     id: 2,
     title: "BackMyProjects",
     description: "A crowdfunding Next.js app, featuring Razorpay payment gateway integration for secure transactions.",
     image: "projects\\BackMyProjects.png",
-    tags: ["Next Js", "Tailwind CSS", "MongoDb", "RazorPay"],
+    tags: ["Next Js", "Tailwind CSS", "MongoDb", "Stripe"],
     category: "web app",
-    github: "https://github.com/ahsinali-17/BackMyProjects",
+    github: "https://back-my-projects.vercel.app/",
     features: ["Project listings", "Payment gateway integration", "Responsive design"],
-    challenges: "Integrating Razorpay with Next.js API routes and ensuring secure transactions.",
-    duration: "1 month",
+    challenges: "Integrating Stripe with Next.js API routes and ensuring secure transactions.",
+    duration: "2 weeks",
   },
   {
     id: 3,
@@ -285,7 +285,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/uber-clone",
     features: ["Real-time ride booking", "Location tracking", "Authentication", "Responsive UI"],
     challenges: "Implementing real-time ride updates with Socket.io and integrating maps API effectively.",
-    duration: "2 months",
+    duration: "6 weeks",
   },
   {
     id: 4,
@@ -297,7 +297,7 @@ export const projects = [
     github: "https://stripe-store-lake.vercel.app/",
     features: ["Stripe payments", "User authentication", "Product management", "Cart & checkout"],
     challenges: "Integrating Stripe securely with Firebase authentication and managing cart state with Redux.",
-    duration: "1.5 months",
+    duration: "2 weeks",
   },
   {
     id: 5,
@@ -321,7 +321,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/TSK-000-42",
     features: ["Task management", "User authentication", "Task history"],
     challenges: "Implementing Firebase authentication and syncing tasks in real time.",
-    duration: "3 weeks",
+    duration: "2 weeks",
   },
   {
     id: 7,
@@ -333,7 +333,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/Spotify-clone",
     features: ["Music player", "Album browsing", "Responsive design"],
     challenges: "Handling audio playback and managing UI interactions with vanilla JS.",
-    duration: "2 weeks",
+    duration: "3 weeks",
   },
   {
     id: 8,
@@ -345,7 +345,7 @@ export const projects = [
     github: "https://github.com/ahsinali-17/Weather-web-App",
     features: ["City search", "Weather display", "API integration"],
     challenges: "Managing asynchronous API calls and error handling.",
-    duration: "2 weeks",
+    duration: "1 week",
   },
   {
     id: 9,
