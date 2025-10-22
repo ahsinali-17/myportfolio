@@ -94,7 +94,7 @@ const Chat = () => {
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 mt-20">
+      <div className="w-full flex-1 overflow-y-auto p-4 mt-20">
         {messages.map((msg, idx) => (
           <div key={idx} className={`w-full mb-2 flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
             <div className={`px-4 py-2 rounded-lg max-w-[70%] overflow-x-hidden text-sm shadow-md ${msg.sender === "user" ? "bg-blue-500 text-white" : "bg-white text-gray-800"}`}>
@@ -115,9 +115,9 @@ const Chat = () => {
         )}
         <div ref={messagesEndRef} />
       </div>
-      <form onSubmit={handleSend} className="flex p-4">
+      <form onSubmit={handleSend} className="w-full flex items-center p-2 sm:p-4">
         <input
-          className="flex-1 border rounded-l-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-[70%] sm:flex-1 border rounded-l-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           type="text"
           value={input}
           onChange={e => setInput(e.target.value)}
@@ -125,7 +125,7 @@ const Chat = () => {
         />
         <button
           type="submit"
-          className="bg-[#9c27b0] text-white px-6 py-2 rounded-r-full font-semibold hover:bg-[#ba25d4] hover:scale-105 transition-colors"
+          className="w-[30%] sm:w-auto bg-[#9c27b0] text-white px-6 py-2 rounded-r-full font-semibold hover:bg-[#ba25d4] hover:scale-105 transition-colors"
         >
           Send
         </button>
