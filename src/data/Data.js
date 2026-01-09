@@ -26,7 +26,7 @@ export const Bio = {
     "I am a motivated and adaptable individual who values learning and tackling new challenges. Focused on delivering quality results, I approach tasks with a positive attitude and a growth mindset, aiming to contribute effectively and achieve meaningful outcomes.",
   github: "https://github.com/ahsinali-17",
   resume:
-    "https://drive.google.com/file/d/1iZejU3_265u8p7C0Yf8reDzSn5rb5Jdb/view?usp=sharing",
+    "https://drive.google.com/file/d/1R8tCGTd1yPv8yNpWMoYXa_HOC8vCWUxC/view?usp=sharing",
   linkedin: "https://www.linkedin.com/in/ahsin-ali-3a5135276/",
   twitter: "https://x.com/Ahsinali_17?t=Ebsaxzwff1yVlPHuMoc9jQ&s=09",
   insta: "https://www.instagram.com/ahsinali_17/",
@@ -265,6 +265,18 @@ export const projects = [
   },
   {
     id: 2,
+    title: "DocMind AI",
+    description: "A context-aware AI agent using Retrieval-Augmented Generation (RAG) that enables users to query complex documents and verify answers through a synchronized split-screen interface.",
+    image: "projects\\DocMind.png",
+    tags: ["React Js", "RAG", "MongoDb", "Express js", "Vector Embeddings"],
+    category: "web app",
+    github: "https://github.com/ahsinali-17/docMind-AI",
+    features: ["RAG-powered Document Analysis", "Real-time Response Streaming", "Interactive Split-Screen UI"],
+    challenges: "Synchronizing the PDF viewer state with AI-generated citations for precise 'click-to-scroll' navigation and managing asynchronous data streams.",
+    duration: "1 weeks",
+  },
+  {
+    id: 3,
     title: "BackMyProjects",
     description: "A crowdfunding Next.js app, featuring Razorpay payment gateway integration for secure transactions.",
     image: "projects\\BackMyProjects.png",
@@ -276,7 +288,7 @@ export const projects = [
     duration: "2 weeks",
   },
   {
-    id: 3,
+    id: 4,
     title: "Uber-clone",
     description: "Uber-clone is a modern ride-booking web app with real-time location tracking, user authentication, and responsive design.",
     image: "projects\\uber-clone.png",
@@ -288,7 +300,7 @@ export const projects = [
     duration: "6 weeks",
   },
   {
-    id: 4,
+    id: 5,
     title: "StripeStore",
     description: "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
     image: "projects\\stripeStore.png",
@@ -300,7 +312,7 @@ export const projects = [
     duration: "2 weeks",
   },
   {
-    id: 5,
+    id: 6,
     title: "Password manager",
     description: "A react app which can remember provided passwords along with the username and website's URL...",
     image: "projects\\password-manager.png",
@@ -312,7 +324,7 @@ export const projects = [
     duration: "3 weeks",
   },
   {
-    id: 6,
+    id: 7,
     title: "Todo List App",
     description: "A Firebase + react app to keep record of your daily tasks with user authentication and history access.",
     image: "projects\\todo.jpeg",
@@ -324,7 +336,7 @@ export const projects = [
     duration: "2 weeks",
   },
   {
-    id: 7,
+    id: 8,
     title: "Spotify Clone",
     description: "Spotify clone with a functional music player...",
     image: "projects\\spotify.png",
@@ -336,7 +348,7 @@ export const projects = [
     duration: "3 weeks",
   },
   {
-    id: 8,
+    id: 9,
     title: "Weather App",
     description: "A React app which uses weather api to fetch weather updates.",
     image: "projects\\weather.jpg",
@@ -348,7 +360,7 @@ export const projects = [
     duration: "1 week",
   },
   {
-    id: 9,
+    id: 10,
     title: "dailyNEWS",
     description: "A react app which fetches current news using news api and displays them categorically.",
     image: "projects\\dailynews.png",
@@ -360,7 +372,7 @@ export const projects = [
     duration: "2 weeks",
   },
   {
-    id: 10,
+    id: 11,
     title: "Wordle-clone",
     description: "Wordle-clone is a web-based word puzzle game built with React...",
     image: "projects\\wordle-clone.png",
