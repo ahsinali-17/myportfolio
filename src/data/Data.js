@@ -18,9 +18,8 @@ export const Bio = {
   roles: [
     "MERN Stack Developer",
     "Web App. Developer",
-    "React Developer",
-    "Skillful in Next Js",
-    "AI integration",
+    "Next Js Developer",
+    "AI Enthusiast",
   ],
   description:
     "I am a motivated and adaptable individual who values learning and tackling new challenges. Focused on delivering quality results, I approach tasks with a positive attitude and a growth mindset, aiming to contribute effectively and achieve meaningful outcomes.",

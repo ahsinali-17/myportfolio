@@ -13,35 +13,35 @@ let chatSession = null;
 
 const portfolioData = { Bio, skills, education, experience, projects };
 
-const createSystemPrompt = (data) => `You are an AI assistant for ${
-  data.Bio.name
-}'s portfolio website. You should ONLY answer questions related to ${data.Bio.name}'s professional background, education, skills, projects, and work experience based on the following data:
+const createSystemPrompt = () => `You are an AI assistant for ${
+  portfolioData.Bio.name
+}'s portfolio website. You should ONLY answer questions related to ${portfolioData.Bio.name}'s professional background, education, skills, projects, and work experience based on the following data:
 
 PERSONAL INFO:
-${JSON.stringify(data.Bio, null, 2)}
+${JSON.stringify(portfolioData.Bio, null, 2)}
 
 SKILLS:
-${JSON.stringify(data.skills, null, 2)}
+${JSON.stringify(portfolioData.skills, null, 2)}
 
 EDUCATION:
-${JSON.stringify(data.education, null, 2)}
+${JSON.stringify(portfolioData.education, null, 2)}
 
 WORK EXPERIENCE:
-${JSON.stringify(data.experience, null, 2)}
+${JSON.stringify(portfolioData.experience, null, 2)}
 
 PROJECTS:
-${JSON.stringify(data.projects, null, 2)}
+${JSON.stringify(portfolioData.projects, null, 2)}
 
 INSTRUCTIONS:
-- Answer questions about ${data.Bio.name}'s background, skills, education, projects, and professional experience
+- Answer questions about ${portfolioData.Bio.name}'s background, skills, education, projects, and professional experience
 - Be conversational and helpful
-- If asked about topics unrelated to ${data.Bio.name}'s professional profile, politely decline and redirect to relevant topics
+- If asked about topics unrelated to ${portfolioData.Bio.name}'s professional profile, politely decline and redirect to relevant topics
 - Keep responses concise, to the point but informative.
 - Give selective answers based on the data provided. Dont tell about the whole section if they ask about a specific part. For example, if you're asked, where i live, keep it to the point and say Wah cantt,Pakistan. Then ask if they want more information. Dont tell them about the time zone, it is not relevant. If you don't know the answer, say "I'm not sure about that."
 - You can suggest related questions about his work or skills`;
 
 // Helper to initialize the Model with the CURRENT key
-const initializeModel = () => {
+const initializeModel = async () => {
   const apiKey = API_KEYS[currentKeyIndex];
   if (!apiKey) {
     throw new Error(`Gemini API Key missing for index: ${currentKeyIndex}`);
@@ -50,33 +50,33 @@ const initializeModel = () => {
   genAI = new GoogleGenerativeAI(apiKey);
   model = genAI.getGenerativeModel({
     model: "gemini-2.5-flash",
-    systemInstruction: createSystemPrompt(portfolioData),
+    systemInstruction: createSystemPrompt(),
   });
 };
 
 // Initialize or Restore Chat Session
 const initializeChatSession = async (history = null) => {
-  if (!model) initializeModel();
+  if (!model) await initializeModel();
 
   // If history is provided, use it (Restore Logic)
   if (history) {
-    chatSession = model.startChat({ history });
+    chatSession = await model.startChat({ history });
     return chatSession;
   }
 
   // Otherwise, start fresh if not exists
   if (!chatSession) {
-    chatSession = model.startChat({
+    chatSession = await model.startChat({
       history: [
         {
           role: "user",
-          parts: [{ text: `Hello! I'd like to know about ${data.Bio.name}.` }],
+          parts: [{ text: `Hello! I'd like to know about ${portfolioData.Bio.name}.` }],
         },
         {
           role: "model",
           parts: [
             {
-              text: `Hi! I'm here to help you learn about ${data.Bio.name}'s professional background, skills, education, and projects. What would you like to know?`,
+              text: `Hi! I'm here to help you learn about ${portfolioData.Bio.name}'s professional background, skills, education, and projects. What would you like to know?`,
             },
           ],
         },
@@ -87,15 +87,15 @@ const initializeChatSession = async (history = null) => {
 };
 
 // Reset chat session
-export const resetChatSession = () => {
+export const resetChatSession = async () => {
   chatSession = null;
-  return initializeChatSession();
+  return await initializeChatSession();
 };
 
 // Restore chat session from history (Exported)
-export const restoreChatSession = (history) => {
+export const restoreChatSession = async (history) => {
   chatSession = null;
-  return initializeChatSession(history);
+  return await initializeChatSession(history);
 };
 
 const rotateKeyAndRetry = async (question, history) => {
@@ -104,7 +104,7 @@ const rotateKeyAndRetry = async (question, history) => {
   for (let i = 1; i < API_KEYS.length; i++) {
     currentKeyIndex = (startKeyIndex + i) % API_KEYS.length;
     model = null; // Force reinitialization with new key
-    const chat = initializeChatSession(history);
+    const chat = await initializeChatSession(history);
     try {
       const result = await chat.sendMessage(question);
       return result.response.text();
@@ -129,7 +129,7 @@ const rotateKeyAndRetry = async (question, history) => {
 
 export const askAboutMe = async (question) => {
   try {
-    const chat = initializeChatSession();
+    const chat = await initializeChatSession();
     const result = await chat.sendMessage(question);
     return result.response.text();
   } catch (error) {
