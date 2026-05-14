@@ -35,7 +35,7 @@ const Project = () => {
 
               <div className="flex flex-col gap-3 justify-center items-center">
                 <h3 className=" font-semibold mb-2">
-                 <a href={project.github} target="_blank" rel="noreferrer" className="flex flex-wrap justify-center text-center text-2xl lg:text-3xl text-violet-400 hover:text-white hover:brightness-200 cursor-pointer">{project.title} <span className="text-xs lg:text-sm text-red-500 text-center">{"(" + project.category + ")"}</span></a> 
+                 <a href={project.link} target="_blank" rel="noreferrer" className="flex flex-wrap justify-center text-center text-2xl lg:text-3xl text-violet-400 hover:text-white hover:brightness-200 cursor-pointer">{project.title} <span className="text-xs lg:text-sm text-red-500 text-center">{"(" + project.category + ")"}</span></a> 
                 </h3>
                 <p className="text-center">
                   {project.description.slice(0,150) + "..."}
