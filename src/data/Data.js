@@ -49,7 +49,7 @@ export const skills = [
       },
       {
         name: "JavaScript",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/250px-Unofficial_JavaScript_logo_2.svg.png?utm_source=commons.wikimedia.org&utm_campaign=parser&utm_content=thumbnail",
         skillLevel: 85,
         skillExperience: "2 years",
       },
@@ -61,7 +61,7 @@ export const skills = [
       },
       {
         name: "React Js",
-        image: "https://cdn.worldvectorlogo.com/logos/react-1.svg",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg1MndL-Xp1JcnqaB0YOqTp6zDjrwYyGKsPA&s",
         skillLevel: 90,
         skillExperience: "2 years",
       },
@@ -73,7 +73,7 @@ export const skills = [
       },
       {
         name: "Tailwind CSS",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDML5CFq70Y9FJ52YnyCjfdyUA3g9B6is_jA&s",
         skillLevel: 90,
         skillExperience: "2 years",
       },
@@ -167,7 +167,7 @@ export const skills = [
       },
       {
         name: "VS Code",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
+        image: "https://w7.pngwing.com/pngs/512/824/png-transparent-visual-studio-code-hd-logo-thumbnail.png",
         skillLevel: 95,
         skillExperience: "2+ years",
       },
