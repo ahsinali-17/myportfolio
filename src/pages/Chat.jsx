@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import BgAnimation from './HeroBgAnimation';
-import "./Navbar.css";
+import BgAnimation from '../components/HeroBgAnimation';
+import "../components/Navbar.css";
 import {Link} from "react-router-dom";
 import { askAboutMe } from "../utils/geminiService";
 

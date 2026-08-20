@@ -40,7 +40,7 @@ const ContactForm = () => {
   };
 
   return (
-    <main className="mb-6 min-h-[60vh] text-center0vh] text-white">
+    <main className="mb-6 min-h-[60vh] text-center text-white">
 
       <section className="sixth my-[10vh] min-h-[60vh]">
 
