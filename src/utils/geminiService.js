@@ -1,4 +1,5 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import { SystemMessage, HumanMessage, AIMessage } from "@langchain/core/messages";
 import { Bio, skills, education, experience, projects } from "../data/Data.js";
 
 const API_KEYS = [
@@ -7,9 +8,7 @@ const API_KEYS = [
 ];
 
 let currentKeyIndex = 0;
-let genAI = null;
 let model = null;
-let chatSession = null;
 
 const portfolioData = { Bio, skills, education, experience, projects };
 
@@ -40,77 +39,57 @@ INSTRUCTIONS:
 - Give selective answers based on the data provided. Dont tell about the whole section if they ask about a specific part. For example, if you're asked, where i live, keep it to the point and say Wah cantt,Pakistan. Then ask if they want more information. Dont tell them about the time zone, it is not relevant. If you don't know the answer, say "I'm not sure about that."
 - You can suggest related questions about his work or skills`;
 
-// Helper to initialize the Model with the CURRENT key
-const initializeModel = async () => {
-  const apiKey = API_KEYS[currentKeyIndex];
-  if (!apiKey) {
-    throw new Error(`Gemini API Key missing for index: ${currentKeyIndex}`);
-  }
-
-  genAI = new GoogleGenerativeAI(apiKey);
-  model = genAI.getGenerativeModel({
-    model: "gemini-2.5-flash",
-    systemInstruction: createSystemPrompt(),
-  });
-};
-
-// Initialize or Restore Chat Session
-const initializeChatSession = async (history = null) => {
-  if (!model) await initializeModel();
-
-  // If history is provided, use it (Restore Logic)
-  if (history) {
-    chatSession = await model.startChat({ history });
-    return chatSession;
-  }
-
-  // Otherwise, start fresh if not exists
-  if (!chatSession) {
-    chatSession = await model.startChat({
-      history: [
-        {
-          role: "user",
-          parts: [{ text: `Hello! I'd like to know about ${portfolioData.Bio.name}.` }],
-        },
-        {
-          role: "model",
-          parts: [
-            {
-              text: `Hi! I'm here to help you learn about ${portfolioData.Bio.name}'s professional background, skills, education, and projects. What would you like to know?`,
-            },
-          ],
-        },
-      ],
+// Helper to get/initialize the model with the current key index
+const getModel = () => {
+  if (!model) {
+    const apiKey = API_KEYS[currentKeyIndex];
+    if (!apiKey) {
+      throw new Error(`Gemini API Key missing for index: ${currentKeyIndex}`);
+    }
+    model = new ChatGoogleGenerativeAI({
+      apiKey: apiKey,
+      model: "gemini-2.5-flash",
     });
   }
-  return chatSession;
+  return model;
 };
 
-// Reset chat session
-export const resetChatSession = async () => {
-  chatSession = null;
-  return await initializeChatSession();
+// Helper to convert React message objects to LangChain message objects
+const convertToLangchainMessages = (messages) => {
+  if (!messages || !Array.isArray(messages)) return [];
+
+  const mapped = messages.map(msg => {
+    // If it's already a LangChain message object
+    if (msg instanceof SystemMessage || msg instanceof HumanMessage || msg instanceof AIMessage) {
+      return msg;
+    }
+    if (typeof msg._getType === "function") {
+      return msg;
+    }
+    // Check sender/role property
+    const isUser = msg.sender === "user" || msg.role === "user";
+    const text = msg.text || msg.content || String(msg);
+    return isUser ? new HumanMessage(text) : new AIMessage(text);
+  });
+
+  // Ensure system prompt is prepended
+  return [new SystemMessage(createSystemPrompt()), ...mapped];
 };
 
-// Restore chat session from history (Exported)
-export const restoreChatSession = async (history) => {
-  chatSession = null;
-  return await initializeChatSession(history);
-};
-
-const rotateKeyAndRetry = async (question, history) => {
+const rotateKeyAndRetry = async (langchainMessages) => {
   const startKeyIndex = currentKeyIndex;
 
   for (let i = 1; i < API_KEYS.length; i++) {
     currentKeyIndex = (startKeyIndex + i) % API_KEYS.length;
     model = null; // Force reinitialization with new key
-    const chat = await initializeChatSession(history);
+    
     try {
-      const result = await chat.sendMessage(question);
-      return result.response.text();
+      const currentModel = getModel();
+      const response = await currentModel.invoke(langchainMessages);
+      return response.content;
     } catch (error) {
       const isQuotaError =
-        error.response?.status === 429 ||
+        error.status === 429 ||
         error.message?.includes("429") ||
         error.message?.includes("Quota");
       if (!isQuotaError) {
@@ -124,32 +103,31 @@ const rotateKeyAndRetry = async (question, history) => {
   }
 
   currentKeyIndex = startKeyIndex;
+  model = null;
   throw new Error("All API keys have reached their quota limits.");
 };
 
-export const askAboutMe = async (question) => {
+export const askAboutMe = async (messages) => {
+  const langchainMessages = convertToLangchainMessages(messages);
   try {
-    const chat = await initializeChatSession();
-    const result = await chat.sendMessage(question);
-    return result.response.text();
+    const currentModel = getModel();
+    const response = await currentModel.invoke(langchainMessages);
+    return response.content;
   } catch (error) {
     const isQuotaError =
-      error.response?.status === 429 ||
+      error.status === 429 ||
       error.message?.includes("429") ||
       error.message?.includes("Quota");
 
     if (isQuotaError) {
       try {
-        const currentHistory = await chatSession.getHistory();
-
-        return await rotateKeyAndRetry(question, currentHistory);
+        return await rotateKeyAndRetry(langchainMessages);
       } catch (retryError) {
         console.error("Retry failed:", retryError);
-        return "Sorry, I'm having trouble connecting right now. Please try again later.";
       }
+    } else {
+      console.error("LangChain Gemini Error:", error);
     }
-
-    console.error("Gemini Error:", error);
-    return "Sorry, I'm having trouble connecting right now. Please try again later.";
   }
+  return "Sorry, I'm having trouble connecting right now. Please try again later.";
 };

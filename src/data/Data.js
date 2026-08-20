@@ -33,6 +33,35 @@ export const Bio = {
 
 export const skills = [
   {
+    title: "Languages",
+    skills: [
+      {
+        name: "JavaScript",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/250px-Unofficial_JavaScript_logo_2.svg.png?utm_source=commons.wikimedia.org&utm_campaign=parser&utm_content=thumbnail",
+        skillLevel: 90,
+        skillExperience: "2 years",
+      },
+      {
+        name: "TypeScript",
+        image: "https://cdn.worldvectorlogo.com/logos/typescript.svg",
+        skillLevel: 85,
+        skillExperience: "1 year",
+      },
+      {
+        name: "C++",
+        image: "https://i.pinimg.com/736x/c2/66/4d/c2664dcf18d2fd777aa954df6cd113a2.jpg",
+        skillLevel: 75,
+        skillExperience: "2 years",
+      },
+      {
+        name: "Java",
+        image: "https://images.seeklogo.com/logo-png/15/2/java-logo-png_seeklogo-158094.png",
+        skillLevel: 70,
+        skillExperience: "1.5 years",
+      },
+    ],
+  },
+  {
     title: "Frontend",
     skills: [
       {
@@ -44,20 +73,8 @@ export const skills = [
       {
         name: "CSS",
         image: "https://coryrylan.com/assets/css-CfW5UZaa.svg",
-        skillLevel: 90,
+        skillLevel: 95,
         skillExperience: "2+ years",
-      },
-      {
-        name: "JavaScript",
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/250px-Unofficial_JavaScript_logo_2.svg.png?utm_source=commons.wikimedia.org&utm_campaign=parser&utm_content=thumbnail",
-        skillLevel: 85,
-        skillExperience: "2 years",
-      },
-      {
-        name: "TypeScript",
-        image: "https://cdn.worldvectorlogo.com/logos/typescript.svg",
-        skillLevel: 70,
-        skillExperience: "1 year",
       },
       {
         name: "React Js",
@@ -68,27 +85,39 @@ export const skills = [
       {
         name: "Next Js",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9uzErWz9EXqZDxZ5lP9aYpMz8eK6rr5X3w&s",
-        skillLevel: 80,
+        skillLevel: 85,
         skillExperience: "1.5 years",
       },
       {
         name: "Tailwind CSS",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDML5CFq70Y9FJ52YnyCjfdyUA3g9B6is_jA&s",
-        skillLevel: 90,
+        skillLevel: 95,
         skillExperience: "2 years",
       },
       {
         name: "Redux - Toolkit",
         image: "https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
-        skillLevel: 85,
+        skillLevel: 90,
         skillExperience: "1.5 years",
       },
       {
-        name: "motion-animation lib.",
-        image: "https://user-images.githubusercontent.com/7850794/164965509-2a8dc49e-2ed7-4243-a2c9-481b03bbc31a.png",
-        skillLevel: 75,
+         name: "Zustand",
+        image: "https://user-images.githubusercontent.com/958486/218346783-72be5ae3-b953-4dd7-b239-788a882fdad6.svg",
+        skillLevel: 80,
+        skillExperience: "1.5 years",
+      },
+      {
+        name: "GSAP",
+        image: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*wGdP-ym3kqQopOA9us8nXg.jpeg",
+        skillLevel: 85,
         skillExperience: "1 year",
       },
+      {
+         name: "motion-animation lib.",
+        image: "https://user-images.githubusercontent.com/7850794/164965509-2a8dc49e-2ed7-4243-a2c9-481b03bbc31a.png",
+        skillLevel: 90,
+        skillExperience: "1 year",
+      }
     ],
   },
   {
@@ -103,13 +132,13 @@ export const skills = [
       {
         name: "Express Js",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7S33Oq2FeRbyBBA6l1q8PwLVa3SzaONO-9Q&s",
-        skillLevel: 80,
+        skillLevel: 90,
         skillExperience: "2 years",
       },
       {
         name: "Postgresql",
         image: "https://www.postgresql.org/media/img/about/press/elephant.png",
-        skillLevel: 70,
+        skillLevel: 80,
         skillExperience: "1 year",
       },
       {
@@ -119,33 +148,27 @@ export const skills = [
         skillExperience: "2 years",
       },
       {
-        name: "Firebase",
-        image: "https://www.gstatic.com/devrel-devsite/prod/v80eb94e0352d656ad1e20abf6117cdec6c1343c7722ef10f52a1a3f77f1e58f7/firebase/images/touchicon-180.png",
-        skillLevel: 80,
-        skillExperience: "1.5 years",
-      },
-      {
         name: "Supabase",
         image: "https://images.seeklogo.com/logo-png/43/1/supabase-logo-png_seeklogo-435677.png",
-        skillLevel: 75,
+        skillLevel: 90,
         skillExperience: "1 year",
+      },
+          {
+        name: "Socket.io",
+        image: "https://avatars.githubusercontent.com/u/10566080?v=4",
+        skillLevel: 85,
+        skillExperience: "1 year",
+      },
+       {
+        name: "NestJs",
+        image: "https://www.vhv.rs/dpng/d/498-4989583_nestjs-logo-hd-png-download.png",
+        skillLevel: 90,
+        skillExperience: "2 years",
       },
       {
         name: "Stripe",
         image: "https://www.citypng.com/public/uploads/preview/hd-stripe-official-logo-png-701751694777755j0aa3puxte.png",
-        skillLevel: 70,
-        skillExperience: "1 year",
-      },
-      {
-        name: "Next Js",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9uzErWz9EXqZDxZ5lP9aYpMz8eK6rr5X3w&s",
         skillLevel: 80,
-        skillExperience: "1.5 years",
-      },
-      {
-        name: "Socket.io",
-        image: "https://avatars.githubusercontent.com/u/10566080?v=4",
-        skillLevel: 70,
         skillExperience: "1 year",
       },
     ],
@@ -171,11 +194,23 @@ export const skills = [
         skillLevel: 95,
         skillExperience: "2+ years",
       },
+         {
+        name: "Cursor",
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Cursor_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        skillLevel: 95,
+        skillExperience: "2+ years",
+      },
       {
         name: "Postman",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWeEbxr2jaJP6Y3GKedSkC-nwBiblIG5USaQ&s",
-        skillLevel: 85,
+        skillLevel: 95,
         skillExperience: "1.5 years",
+      },
+      {
+        name: "Langchain",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyVr9cLs6MgRqhnkGKpSHrY8IIjrZjrnAcOMU3pfleebudD6wfXaAi2iAS&s=10",
+        skillLevel: 90,
+        skillExperience: "1 year",
       },
     ],
   },
@@ -227,10 +262,29 @@ export const education = [
     id: 0,
     img: "exp_edu//uet.jpg",
     school: "University Of Engineering & Technology, Taxila",
-    date: "Oct 2022 - present",
-    grade: "3.62 CGPA",
-    desc: "I am pursuing a Bachelor's degree in Computer Science and Engineering at the University of Engineering & Technology, Taxila, with a CGPA of 3.62/4.00 after six semesters. My coursework includes Data Structures, Algorithms, OOP, Databases, Operating Systems, Artificial Neural Networks, Compiler Construction, and Computer Networks.",
+    date: "Oct 2022 - August 2026",
+    grade: "3.57 CGPA",
+    desc: "I have completed my graduation degree in Computer Science at the University of Engineering & Technology, Taxila, with an overall CGPA of 3.57/4.00. My coursework includes Data Structures, Algorithms, OOP, Databases, Operating Systems, AI/ML, Artificial Neural Networks, Compiler Construction, and Computer Networks.",
     degree: "Bachelor of Science in Computer Science",
+  },
+];
+
+export const certifications = [
+  {
+    id: 0,
+    img: "certificates//MERN.png",
+    school: "The Great Learning Academy" ,
+    date: "Feb 2025",
+    desc: "Successfully completed the MERN Stack Fundamentals course, acquiring foundational knowledge of MongoDB, Express.js, React.js, and Node.js for building dynamic web applications.",
+    title: "MERN Stack Fundamentals Certificate",
+  },
+  {
+    id: 1,
+    img: "certificates//genAI.jpeg",
+    school: "NCEAC" ,
+    date: "May 2026",
+    desc: "Earned the Generative AI Application Developer Certificate from UETIANS Lahore Endowment Foundation (USA) in collaboration with HEC and PAKANGELS. Graduated as a Top Performer in Cohort 3.",
+    title: "Generative AI Application Developer Certificate",
   },
 ];
 

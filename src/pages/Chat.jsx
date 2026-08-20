@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import BgAnimation from './HeroBgAnimation';
 import "./Navbar.css";
 import {Link} from "react-router-dom";
-import { askAboutMe, resetChatSession, restoreChatSession } from "../utils/geminiService";
+import { askAboutMe } from "../utils/geminiService";
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -16,30 +16,7 @@ const Chat = () => {
   useEffect(() => {
     const savedMessages = localStorage.getItem('chatMessages');
     if (savedMessages) {
-      const parsedMessages = JSON.parse(savedMessages);
-      setMessages(parsedMessages);
-      
-      // Restore Gemini chat session from saved messages
-      const geminiHistory = parsedMessages.slice(1).map(msg => ({
-        role: msg.sender,
-        parts: [{ text: msg.text }]
-      }));
-      
-      if (geminiHistory.length > 0) {
-        // Add initial context
-        const fullHistory = [
-          {
-            role: "user",
-            parts: [{ text: "Hello! I'd like to know about Ahsin Ali." }]
-          },
-          {
-            role: "model",
-            parts: [{ text: "Hi! I'm here to help you learn about Ahsin Ali's professional background, skills, education, and projects. What would you like to know?" }]
-          },
-          ...geminiHistory
-        ];
-        restoreChatSession(fullHistory);
-      }
+      setMessages(JSON.parse(savedMessages));
     }
   }, []);
 
@@ -53,7 +30,6 @@ const Chat = () => {
   const handleResetChat = () => {
     const initialMessage = { sender: "model", text: "Hi! I'm here to help you learn about Ahsin Ali's professional background, skills, education, and projects. What would you like to know?" };
     setMessages([initialMessage]);
-    resetChatSession();
     localStorage.removeItem('chatMessages');
   };
 
@@ -62,12 +38,13 @@ const Chat = () => {
     if (!input.trim()) return;
     
     const userMessage = input;
-    setMessages(prev => [...prev, { sender: "user", text: userMessage }]);
+    const updatedMessages = [...messages, { sender: "user", text: userMessage }];
+    setMessages(updatedMessages);
     setInput("");
     setLoading(true);
     
     try {
-      const response = await askAboutMe(userMessage);
+      const response = await askAboutMe(updatedMessages);
       setMessages(prev => [...prev, { sender: "model", text: response }]);
     } catch (error) {
       setMessages(prev => [...prev, { sender: "model", text: "Sorry, I'm having trouble connecting right now. Please try again later." }]);

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-scroll";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -13,21 +12,32 @@ const Navbar = () => {
     setMenuOpen(false);
   };
 
+  const handleScroll = (e, targetId) => {
+    e.preventDefault();
+    closeMenu();
+    const element = document.getElementById(targetId);
+    if (element && window.locoScroll) {
+      window.locoScroll.scrollTo(element, {
+        offset: -100,
+        duration: 1.2,
+      });
+    } else if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="navbar-container">
       <nav className="navbar">
         {/* Logo */}
         <div className="logo text-sm md:text-2xl">
-          <Link
-            onClick={closeMenu}
-            className="logopic"
-            to="home"
-            smooth={true}
-            duration={500}
-            offset={-100}
+          <a
+            href="#home"
+            onClick={(e) => handleScroll(e, "home")}
+            className="logopic cursor-pointer"
           >
             Portfolio<span className="dot">.</span>
-          </Link>
+          </a>
         </div>
 
         {/* Burger Icon */}
@@ -66,18 +76,15 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <div className={`right ${menuOpen ? "open" : ""}`}>
-          {["about", "skills", "projects","experience", "contact"].map((section, index) => (
+          {["about", "skills", "projects", "certificates", "experience", "contact"].map((section, index) => (
             <div key={index} className="nav-item">
-              <Link
-                onClick={closeMenu}
-                to={section}
-                smooth={true}
-                duration={500}
-                offset={-100}
+              <a
+                href={`#${section}`}
+                onClick={(e) => handleScroll(e, section)}
                 className="hover:text-red-600 cursor-pointer"
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
-              </Link>
+              </a>
             </div>
           ))}
           <div className="github2 block md:hidden">
@@ -94,17 +101,17 @@ const Navbar = () => {
         </div>
 
         <div className="github">
-            <a
-              href="https://github.com/ahsinali-17"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button className="github-button">
-               <img src="./github.svg" width={24} alt="github" className="inline-block mr-3" />
-                Github Profile
-              </button>
-            </a>
-          </div>
+          <a
+            href="https://github.com/ahsinali-17"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button className="github-button">
+              <img src="./github.svg" width={24} alt="github" className="inline-block mr-3" />
+              Github Profile
+            </button>
+          </a>
+        </div>
       </nav>
     </header>
   );

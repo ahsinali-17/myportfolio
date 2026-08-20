@@ -1,18 +1,24 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import BgAnimation from './components/HeroBgAnimation';
-import { Element } from 'react-scroll';
-import Home from './components/Home';
+import Home from './pages/Home';
 import AskAboutMeButton from './components/AskAboutMeButton';
 import { Routes, Route } from 'react-router-dom';
+import Loader from './components/Loader';
+import LocomotiveScroll from 'locomotive-scroll';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Lazy load heavy components
-const About = lazy(() => import('./components/About'));
-const Skills = lazy(() => import('./components/Skills'));
-const Project = lazy(() => import('./components/Project'));
-const Timeline = lazy(() => import('./components/Timeline'));
-const Contact = lazy(() => import('./components/Contact'));
-const Chat = lazy(() => import('./components/Chat'));
+const About = lazy(() => import('./pages/About'));
+const Skills = lazy(() => import('./pages/Skills'));
+const Project = lazy(() => import('./pages/Project'));
+const Timeline = lazy(() => import('./pages/Timeline'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Chat = lazy(() => import('./pages/Chat'));
+const Certificates = lazy(() => import('./pages/Certificates'));  
 
 // Loading component
 const LoadingSpinner = () => (
@@ -23,54 +29,99 @@ const LoadingSpinner = () => (
 
 const MainSections = () => (
   <div className="relative overflow-x-hidden">
+    <Loader />
     <Navbar />
     <BgAnimation />
-    <Element name="home">
+    <div id="home">
       <Home />
-    </Element>
+    </div>
     <Suspense fallback={<LoadingSpinner />}>
-      <Element name="about">
+      <div id="about">
         <About />
-      </Element>
+      </div>
     </Suspense>
     <Suspense fallback={<LoadingSpinner />}>
-      <Element name="skills">
+      <div id="skills">
         <Skills />
-      </Element>
+      </div>
     </Suspense>
     <Suspense fallback={<LoadingSpinner />}>
-      <Element name="projects">
+      <div id="projects">
         <Project />
-      </Element>
+      </div>
     </Suspense>
     <Suspense fallback={<LoadingSpinner />}>
-      <Element name="experience">
+      <div id="certificates">
+        <Certificates />
+      </div>
+    </Suspense>
+    <Suspense fallback={<LoadingSpinner />}>
+      <div id="experience">
         <Timeline />
-      </Element>
+      </div>
     </Suspense>
     <Suspense fallback={<LoadingSpinner />}>
-      <Element name="contact">
+      <div id="contact">
         <Contact />
-      </Element>
+      </div>
     </Suspense>
     <AskAboutMeButton />
   </div>
 );
 
 const App = () => {
+  useEffect(() => {
+    const scroll = new LocomotiveScroll({
+      lenisOptions: {
+        wrapper: window,
+        content: document.documentElement,
+        lerp: 0.8,
+        duration: 1.2,
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        smoothTouch: false,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+        normalizeWheel: true,
+        autoRaf: false, // Let GSAP drive RAF for perfect synchronization
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      },
+    });
+
+    window.locoScroll = scroll;
+
+    // Sync Locomotive/Lenis scroll events with GSAP ScrollTrigger
+    scroll.lenisInstance?.on('scroll', ScrollTrigger.update);
+
+    // Sync GSAP's ticker with Lenis RAF loop
+    const updateGsapTicker = (time) => {
+      scroll.lenisInstance?.raf(time * 1000);
+    };
+    gsap.ticker.add(updateGsapTicker);
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      gsap.ticker.remove(updateGsapTicker);
+      scroll.destroy();
+      window.locoScroll = null;
+    };
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<MainSections />} />
-      <Route 
-        path="/chat" 
+      <Route
+        path="/chat"
         element={
           <Suspense fallback={<LoadingSpinner />}>
             <Chat />
           </Suspense>
-        } 
+        }
       />
     </Routes>
   );
 };
 
 export default App;
+
