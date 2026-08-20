@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { education, experience } from "../data/Data";
 import {
   VerticalTimeline,
@@ -16,33 +16,32 @@ const Timeline = () => {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    // Heading flip-up animation
-    gsap.fromTo(".timeline-heading",
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    gsap.fromTo(
+      ".timeline-heading",
+      reduceMotion ? { autoAlpha: 1 } : { autoAlpha: 0, y: 20 },
       {
-        y: 40,
-        opacity: 0,
-        transformPerspective: 1000,
-        transformOrigin: "top center"
-      },
-      {
+        autoAlpha: 1,
         y: 0,
-        opacity: 1,
-        scrollTrigger: {
+        duration: reduceMotion ? 0 : 0.6,
+        ease: "power3.out",
+        scrollTrigger: reduceMotion ? undefined : {
           trigger: ".timeline-heading",
-          start: "top bottom",
-          end: "top 65%",
-          scrub: 1,
-        }
-      }
+          start: "top 85%",
+        },
+      },
     );
   }, { scope: containerRef });
 
   return (
     <main ref={containerRef} className="mb-6 min-h-[70vh] text-white p-0">
-      <section className="fifth w-[90%] mx-auto my-[10vh] flex flex-col justify-center gap-6">
-        <h1 className="timeline-heading text-4xl font-semibold w-5/6 mx-auto">
-          Experience & Education
-        </h1>
+      <section className="section-shell fifth flex flex-col justify-center gap-6">
+        <div>
+          <p className="section-kicker">JOURNEY</p>
+          <h1 className="timeline-heading mt-3 text-4xl lg:text-5xl font-semibold">
+            Experience & Education
+          </h1>
+        </div>
         <VerticalTimeline >
           {combinedArray.map((exp, index) => {
             return (
@@ -53,29 +52,31 @@ const Timeline = () => {
                 icon={
                   <img
                     src={exp.img}
-                    alt="icon"
+                    alt={`${exp.role || exp.degree} at ${exp.company || exp.school}`}
+                    loading="lazy"
                     className="w-full h-full rounded-full object-contain bg-white"
                   />
                 }
 
                 contentStyle={{
-                  background: "rgba(78, 80, 81, 0.537)",
-                  color: "#b067bf",
+                  background: "var(--color-surface)",
+                  color: "var(--color-text)",
                   display: "flex",
                   flexDirection: "column",
                   gap: "12px",
-                  border: "1px solid rgb(146, 147, 148)",
-                  borderRadius: "6px"
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "var(--radius-md)"
                 }}
                 contentArrowStyle={{
-                  borderRight: "7px solid rgb(104, 104, 104)"
+                  borderRight: "7px solid var(--color-surface)"
                 }}
                 date={exp.date}
               >
                 <h3 className="font-semibold text-lg">{exp?.role ? exp?.role : exp?.degree}</h3>
-                <h4 className="font-semibold text-md text-violet-300 text-opacity-45">{exp?.company ? exp.company : exp.school}</h4>
-                <p className="text-xs lg:text-sm font-medium text-white">{exp.desc}</p>
-                <span className="flex gap-2 justify-center px-2 flex-wrap text-sky-400">{exp.grade ? exp.grade : exp.skills.map((skill, index) => <span key={index}>{skill}</span>
+                <h4 className="font-semibold text-md text-[var(--color-secondary)]">{exp?.company ? exp.company : exp.school}</h4>
+                <p className="text-xs lg:text-sm font-medium text-[var(--color-text-muted)]">{exp.desc}</p>
+                <span className="flex gap-2 justify-center px-2 flex-wrap text-[var(--color-primary)]">
+                  {exp.grade ? exp.grade : exp.skills.map((skill) => <span className="rounded-full border border-[var(--color-border)] px-2 py-1 text-xs" key={skill}>{skill}</span>
                 )}</span>
               </VerticalTimelineElement>
             )

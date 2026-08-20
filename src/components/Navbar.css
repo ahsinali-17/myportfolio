@@ -5,8 +5,9 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #6d28d9; /* Violet */
-  color: white;
+  background-color: rgba(7, 17, 20, 0.88);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
   z-index: 100;
 }
 
@@ -28,20 +29,22 @@
 .logopic {
   display: inline-block;
   transition: transform 0.5s ease;
+  color: var(--color-primary);
+  transition: all 0.3s ease;
 }
 
 .logo:hover .logopic {
+  color: var(--color-text);
   transform: rotateY(360deg);
-  color: rgba(255, 0, 0, 0.6);
 }
 
 .logo:hover .dot{
-  color:white; 
+  color: var(--color-primary);
 }
 
 .dot {
   font-size: 2.5rem;
-  color: red;
+  color: var(--color-secondary);
 }
 
 /* Right Links */
@@ -53,22 +56,26 @@
 }
 
 .github-button {
-  border: 2px solid #38bdf8;
-  border-radius: 9999px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
   padding: 0.5rem 1rem;
   background: transparent;
-  color: #38bdf8;
+  color: var(--color-primary);
   font-size: 0.875rem;
   cursor: pointer;
 }
 
 .github-button:hover {
-  background: #38bdf8;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-ink);
 }
 
 .burger{
   display: none;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  padding: 0.35rem;
 }
 
 .github{
@@ -100,7 +107,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: rgba(48, 48, 48, 0.9);
+    background-color: var(--color-ink-soft);
     padding: 1rem;
     gap: 1rem;
   }

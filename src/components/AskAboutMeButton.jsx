@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
 
@@ -20,11 +20,11 @@ const AskAboutMeButton = () => {
     <Link
       to="/chat"
       ref={containerRef}
-      className="fixed bottom-8 right-8 flex gap-3 items-center cursor-pointer z-50 bg-[#c33ddb]  rounded-full  shadow-lg overflow-hidden text-nowrap"
+      className="fixed bottom-8 right-8 flex gap-3 items-center cursor-pointer z-50 bg-[var(--color-secondary)]  rounded-full  shadow-lg overflow-hidden text-nowrap"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <img src="/bot.png" alt="bot" className="w-14 h-14 rounded-full bg-black" />
+      <img src="/bot.jfif" alt="bot" className="w-14 h-14 rounded-full bg-[var(--color-primary)]" />
       <span
         ref={spanRef}
         className="hidden group-hover:block -translate-x-5 text-sm font-semibold text-white"

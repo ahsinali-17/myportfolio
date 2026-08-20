@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Navbar.css";
+import { Bio } from "../data/Data";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,6 +12,15 @@ const Navbar = () => {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") closeMenu();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const handleScroll = (e, targetId) => {
     e.preventDefault();
@@ -41,7 +51,14 @@ const Navbar = () => {
         </div>
 
         {/* Burger Icon */}
-        <div className="burger cursor-pointer" onClick={toggleMenu}>
+        <button
+          className="burger cursor-pointer"
+          onClick={toggleMenu}
+          aria-label="Open navigation"
+          aria-expanded={menuOpen}
+          aria-controls="site-navigation"
+          type="button"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -72,16 +89,16 @@ const Navbar = () => {
               strokeLinejoin="round"
             />
           </svg>
-        </div>
+        </button>
 
         {/* Navigation Links */}
-        <div className={`right ${menuOpen ? "open" : ""}`}>
+        <div id="site-navigation" className={`right ${menuOpen ? "open" : ""}`}>
           {["about", "skills", "projects", "certificates", "experience", "contact"].map((section, index) => (
             <div key={index} className="nav-item">
               <a
                 href={`#${section}`}
                 onClick={(e) => handleScroll(e, section)}
-                className="hover:text-red-600 cursor-pointer"
+                className="text-[var(--color-primary)] hover:text-[var(--color-text)] cursor-pointer"
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </a>
@@ -89,7 +106,7 @@ const Navbar = () => {
           ))}
           <div className="github2 block md:hidden">
             <a
-              href="https://github.com/ahsinali-17"
+              href={Bio.github}
               target="_blank"
               rel="noreferrer"
             >
@@ -102,12 +119,12 @@ const Navbar = () => {
 
         <div className="github">
           <a
-            href="https://github.com/ahsinali-17"
+              href={Bio.github}
             target="_blank"
             rel="noreferrer"
           >
             <button className="github-button">
-              <img src="./github.svg" width={24} alt="github" className="inline-block mr-3" />
+              <img src="/github.svg" width={24} alt="github" className="inline-block mr-3" />
               Github Profile
             </button>
           </a>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import BgAnimation from '../components/HeroBgAnimation';
 import "../components/Navbar.css";
 import {Link} from "react-router-dom";
@@ -16,7 +16,12 @@ const Chat = () => {
   useEffect(() => {
     const savedMessages = localStorage.getItem('chatMessages');
     if (savedMessages) {
-      setMessages(JSON.parse(savedMessages));
+      try {
+        const parsedMessages = JSON.parse(savedMessages);
+        if (Array.isArray(parsedMessages)) setMessages(parsedMessages);
+      } catch {
+        localStorage.removeItem('chatMessages');
+      }
     }
   }, []);
 
@@ -54,10 +59,10 @@ const Chat = () => {
   };
 
   return (
-    <div className="chat flex flex-col w-screen overflow-hidden h-screen relative z-0 bg-[#6d28d9]">
+    <div className="chat flex flex-col w-screen overflow-hidden h-screen relative z-0 bg-[var(--color-ink)]">
       <BgAnimation/>
       {/* Header with Logo and Reset Button */}
-      <div className="flex justify-between items-center px-6 py-4 fixed w-full top-0 bg-[#6d28d9] z-10">
+      <div className="flex justify-between items-center px-6 py-4 fixed w-full top-0 bg-[var(--color-ink-soft)] border-b border-[var(--color-border)] z-10">
         <div className="logo text-sm md:text-2xl text-white">
           <Link className="logopic" to="/">
             Portfolio<span className="dot">.</span>
@@ -65,16 +70,16 @@ const Chat = () => {
         </div>
         <button
           onClick={handleResetChat}
-          className="bg-[#9c27b0] hover:bg-[#ba25d4] text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
+          className="border border-[var(--color-primary)] text-[var(--color-primary)] px-4 py-2 rounded-lg text-sm font-semibold transition-colors hover:bg-[var(--color-primary)] hover:text-[var(--color-ink)]"
         >
           Reset Chat
         </button>
       </div>
 
-      <div className="w-full flex-1 overflow-y-auto p-4 mt-20">
+      <div className="w-full flex-1 overflow-y-auto p-4 mt-20 pb-28" aria-live="polite" aria-label="Chat messages">
         {messages.map((msg, idx) => (
           <div key={idx} className={`w-full mb-2 flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
-            <div className={`px-4 py-2 rounded-lg max-w-[70%] overflow-x-hidden text-sm shadow-md ${msg.sender === "user" ? "bg-blue-500 text-white" : "bg-white text-gray-800"}`}>
+            <div className={`px-4 py-2 rounded-lg max-w-[70%] overflow-x-hidden text-sm shadow-md ${msg.sender === "user" ? "bg-[var(--color-primary)] text-[var(--color-ink)]" : "bg-[var(--color-surface)] text-[var(--color-text)]"}`}>
               {msg.text}
             </div>
           </div>
@@ -92,9 +97,11 @@ const Chat = () => {
         )}
         <div ref={messagesEndRef} />
       </div>
-      <form onSubmit={handleSend} className="w-full flex items-center p-2 sm:p-4">
+      <form onSubmit={handleSend} className="w-full flex items-center p-4 fixed bottom-0 bg-[var(--color-ink-soft)] border-t border-[var(--color-border)]">
+        <label className="sr-only" htmlFor="chat-input">Ask a question about Ahsin</label>
         <input
-          className="w-[70%] sm:flex-1 border rounded-l-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          id="chat-input"
+          className="w-[70%] sm:flex-1 border border-[var(--color-border-strong)] bg-[var(--color-ink)] text-[var(--color-text)] rounded-l-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           type="text"
           value={input}
           onChange={e => setInput(e.target.value)}
@@ -102,7 +109,8 @@ const Chat = () => {
         />
         <button
           type="submit"
-          className="w-[30%] sm:w-auto bg-[#9c27b0] text-white px-6 py-2 rounded-r-full font-semibold hover:bg-[#ba25d4] hover:scale-105 transition-colors"
+          aria-label="Send question"
+          className="w-[30%] sm:w-auto bg-[var(--color-primary)] text-[var(--color-ink)] px-6 py-2 rounded-r-full font-semibold hover:bg-[var(--color-primary-strong)] transition-colors"
         >
           Send
         </button>

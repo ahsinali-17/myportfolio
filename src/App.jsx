@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import BgAnimation from './components/HeroBgAnimation';
 import Home from './pages/Home';

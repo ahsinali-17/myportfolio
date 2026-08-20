@@ -1,123 +1,105 @@
-import React from "react";
+import { useRef } from "react";
 import { skills } from "../data/Data";
-import Tilt from "react-parallax-tilt";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const getSkillLevelMeta = (level) => {
+  if (level >= 90) {
+    return {
+      label: "Expert",
+      className: "border-emerald-400/30 bg-emerald-500/10 text-emerald-300",
+    };
+  }
+
+  if (level >= 85) {
+    return {
+      label: "Advanced",
+      className: "border-sky-400/30 bg-sky-500/10 text-sky-300",
+    };
+  }
+
+  if (level >= 80) {
+    return {
+      label: "Intermediate",
+      className: "border-amber-400/30 bg-amber-500/10 text-amber-300",
+    };
+  }
+
+  return {
+    label: "Proficient",
+    className: "border-[var(--color-border)] bg-white/5 text-[var(--color-text-muted)]",
+  };
+};
+
 const Services = () => {
-  const sectionRef = React.useRef(null);
-  const circleRef = React.useRef(null);
+  const sectionRef = useRef(null);
 
   useGSAP(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".skills-grid",
         start: "top 85%",
-        end: "bottom 150%",
-        scrub: 1.5,
+        toggleActions: "play none none reverse",
       },
     });
-    tl.from(".skills-title", {
-      x: -80,
-      opacity: 0,
-      ease: "power3.out",
-    });
 
-    tl.from(".skills-intro", {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power2.out",
-    });
-
-    tl.from(".skill-card", {
-      y: 45,
-      opacity: 0,
-      stagger: 0.14,
-      ease: "power3.out",
-    });
+    tl.fromTo(
+      [".skills-title", ".skills-intro", ".skill-card"],
+      reduceMotion ? { autoAlpha: 1 } : { autoAlpha: 0, y: 18 },
+      { autoAlpha: 1, y: 0, duration: reduceMotion ? 0 : 0.5, stagger: reduceMotion ? 0 : 0.08, ease: "power3.out" },
+    );
   }, sectionRef);
 
   return (
     <main ref={sectionRef} className="mb-6 min-h-[30vh] text-white p-0">
-      <section className="third w-[90%] mx-auto my-[10vh] flex flex-col justify-center gap-12">
-        <h1 className="skills-title text-4xl font-semibold w-5/6 mx-auto">
-          Skills & Tools
-        </h1>
-        <p className="skills-intro text-center text-sm w-5/6 mx-auto">
-          Here are some of the skills and tools I have developed and utilized
-          over the journey...
-        </p>
-        <div className="skills-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full">
+      <section className="section-shell third flex flex-col justify-center gap-10">
+        <div>
+          <p className="section-kicker">CAPABILITIES</p>
+          <h1 className="skills-title mt-3 text-4xl lg:text-5xl font-semibold">
+            Tools I use to build and ship.
+          </h1>
+          <p className="skills-intro mt-4 max-w-2xl text-[var(--color-text-muted)]">
+            A practical toolkit across product interfaces, APIs, data, and AI-assisted workflows.
+          </p>
+        </div>
+        <div className="skills-grid grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
           {skills.map((skill, index) => {
             return (
               <div
                 key={index}
                 className={`s.${
                   index + 1
-                } skill-card flex flex-col items-center justify-start bg-gray-700 p-2 lg:py-6 lg:px-2 mt-3 mb-6 min-h-[20vh] w-5/6 xl:w-5/6 mx-auto rounded-lg gap-8`}
+                } skill-card surface flex flex-col items-start justify-start p-5 lg:p-6 gap-5`}
               >
-                <h1 className="text-2xl text-center font-semibold mb-3">
+                <h2 className="text-2xl font-semibold">
                   {skill.title}
-                </h1>
-                <div className="w-full skill grid grid-cols-3 gap-3">
+                </h2>
+                <div className="w-full skill grid grid-cols-1 sm:grid-cols-2 gap-x-6">
                   {skill.skills.map((item, index) => {
+                    const levelMeta = getSkillLevelMeta(item.skillLevel ?? 0);
+
                     return (
                       <div
                         key={index}
-                        className="flex flex-col items-center justify-center"
+                        className="flex items-center gap-3 border-t border-[var(--color-border)] py-3"
                       >
-                        <Tilt tiltMaxAngleX={40} tiltMaxAngleY={40} scale={1.3}>
-                          <div ref={circleRef} className="group cursor-pointer">
-                            <div
-                              className="
-        relative h-14 w-14
-        transition-transform duration-700
-        [transform-style:preserve-3d]
-        group-hover:[transform:rotateY(180deg)]
-      "
+                        <img src={item.image} alt="" aria-hidden="true" loading="lazy" width={30} height={30} className="h-8 w-8 rounded-md object-contain" />
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="truncate text-sm font-semibold">{item.name}</p>
+                            <span
+                              className={`rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.12em] ${levelMeta.className}`}
+                              aria-label={`Skill level: ${levelMeta.label}`}
                             >
-                              <div
-                                className="
-          absolute inset-0
-          flex items-center justify-center
-          rounded-full
-          bg-black/45
-          [backface-visibility:hidden]
-        "
-                              >
-                                <img
-                                  src={item.image}
-                                  alt={item.name}
-                                  width={30}
-                                  height={30}
-                                  className="h-full w-full rounded-full object-contain p-2"
-                                />
-                              </div>
-
-                              {/* BACK — Percentage */}
-                              <div
-                                className="
-          absolute inset-0
-          flex items-center justify-center
-          rounded-full
-          bg-black/80
-          text-[10px] font-semibold text-cyan-300
-          [backface-visibility:hidden]
-          [transform:rotateY(180deg)]
-        "
-                              >
-                                {item.skillLevel}%
-                              </div>
-                            </div>
+                              {levelMeta.label}
+                            </span>
                           </div>
-                        </Tilt>
-                        <p className="text-xs text-purple-400 text-opacity-55 text-center my-3">
-                          {item.name}
-                        </p>
+                          {item.skillExperience && <p className="text-xs text-[var(--color-text-muted)]">{item.skillExperience}</p>}
+                        </div>
                       </div>
                     );
                   })}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
@@ -24,7 +24,7 @@ const ContactForm = () => {
     const userId = import.meta.env.VITE_PUBLIC_KEY;
     emailjs
       .send(serviceId, templateId, formData, userId)
-      .then((response) => {
+      .then(() => {
         setStatus("SUCCESS");
         setFormData({
           name: "",
@@ -36,40 +36,52 @@ const ContactForm = () => {
       .catch((error) => {
         console.error("FAILED...", error);
         setStatus("FAILED");
-      });
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setStatus("");
+        }, 5000); // Reset status after 5 seconds
+      })
   };
 
   return (
     <main className="mb-6 min-h-[60vh] text-center text-white">
 
-      <section className="sixth my-[10vh] min-h-[60vh]">
+      <section className="section-shell sixth min-h-[60vh]">
 
-        <h1 className="text-4xl font-semibold w-5/6 mx-auto mb-4">Contact Me</h1>
-        <form className="flex flex-col items-center justify-center gap-3 mt-6 min-h-[50vh] w-5/6 mx-auto" onSubmit={handleSubmit}>
-          <input name="email" type="email" placeholder='Your Email*' className='bg-transparent placeholder-gray-400 border border-violet-400 text-white p-2 rounded-md w-full' value={formData.email}
+        <p className="section-kicker">GET IN TOUCH</p>
+        <h1 className="text-4xl font-semibold mx-auto mb-4">Contact Me</h1>
+        <form className="surface flex flex-col items-center justify-center gap-3 mt-6 min-h-[50vh] max-w-[42rem] w-full mx-auto p-5 sm:p-8" onSubmit={handleSubmit}>
+          <label className="sr-only" htmlFor="email">Your email</label>
+          <input id="email" name="email" type="email" placeholder='Your Email*' autoComplete="email" className='form-control' value={formData.email}
             onChange={handleChange}
             required />
-          <input name="name" type="text" placeholder='Your Name*' className='bg-transparent placeholder-gray-400 border border-violet-400 text-white p-2 rounded-md w-full' value={formData.name}
+          <label className="sr-only" htmlFor="name">Your name</label>
+          <input id="name" name="name" type="text" placeholder='Your Name*' autoComplete="name" className='form-control' value={formData.name}
             onChange={handleChange}
             required />
-          <input name="subject" type="text" placeholder='Subject*' className='bg-transparent placeholder-gray-400 border border-violet-400 text-white p-2 rounded-md w-full' value={formData.subject}
+          <label className="sr-only" htmlFor="subject">Subject</label>
+          <input id="subject" name="subject" type="text" placeholder='Subject*' className='form-control' value={formData.subject}
             onChange={handleChange}
             required />
-          <textarea name="message" placeholder='Message*' rows={5} className='bg-transparent placeholder-gray-400 border border-violet-400 text-white p-2 rounded-md w-full' value={formData.message}
+          <label className="sr-only" htmlFor="message">Message</label>
+          <textarea id="message" name="message" placeholder='Message*' rows={5} className='form-control' value={formData.message}
             onChange={handleChange}
             required />
-          <button className='bg-violet-400 hover:scale-110 hover:bg-violet-600 text-white font-semibold w-1/3 py-2 rounded-md' type="submit" disabled={status === 'PENDING' ? true : false}>{status === 'PENDING' ? "Sending..." : "Send"}</button>
+          <button className='button button-primary w-full sm:w-auto' type="submit" disabled={status === 'PENDING'}>
+            {status === 'PENDING' ? "Sending..." : "Send message"}
+          </button>
         </form>
         {status === "SUCCESS" && (
-          <p className="text-green-400 mt-60] text-center">Message sent successfully!</p>
+          <p className="text-center text-green-400 mt-6" aria-live="polite">Message sent successfully!</p>
         )}
         {status === "FAILED" && (
-          <p className="text-red-400 mt-60] text-center">Failed to send message. Please try again.</p>
+          <p className="text-center text-[var(--color-danger)] mt-6" aria-live="polite">Failed to send message. Please try again.</p>
         )}
       </section>
-      <footer className="flex justify-center items-center bg-gray-500 absolute bottom-4 w-full">
+      <footer className="flex justify-center items-center border-t border-[var(--color-border)] py-5 w-full text-sm text-[var(--color-text-muted)]">
         <span>
-          <span className="text-red-600 font-semibold">AA</span>portfolio
+          <span className="text-[var(--color-secondary)] font-semibold">AA</span>portfolio
           &#169; 2025. All rights reserved.
         </span>
       </footer>

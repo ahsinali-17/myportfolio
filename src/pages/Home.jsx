@@ -1,21 +1,25 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import Typed from 'typed.js';
 import './Home.css';
 import { Bio } from '../data/Data';
-import Tilt from 'react-parallax-tilt';
 
 const Home = () => {
   const el = useRef(null);
   const sectionRef = useRef(null);
   const leftRef = useRef(null);
-  const emojiRef = useRef(null);
   const ctaRef = useRef(null);
   const imageRef = useRef(null);
   const { roles, resume, name } = Bio;
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      el.current.textContent = roles[0];
+      return undefined;
+    }
+
     const typed = new Typed(el.current, {
       strings: [...roles],
       typeSpeed: 50,
@@ -28,79 +32,74 @@ const Home = () => {
   }, [roles]);
 
   useGSAP(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      gsap.set([leftRef.current, ctaRef.current, imageRef.current], { autoAlpha: 1, clearProps: 'transform' });
+      return;
+    }
+
     const tl = gsap.timeline({
-      delay: 3.2,
+      delay: 0.15,
       defaults: {
-        ease: 'power2.out',
-        duration: 2.5,
+        ease: 'power3.out',
       },
     });
 
     tl.fromTo(
       leftRef.current,
-      { autoAlpha: 0, y: 52 },
-      { autoAlpha: 1, y: 0, duration: 0.9 }
+      { autoAlpha: 0, y: 24 },
+      { autoAlpha: 1, y: 0, duration: 0.7 }
     )
       .fromTo(
-        [emojiRef.current, ctaRef.current],
-        { autoAlpha: 0, x: -16 },
-        { autoAlpha: 1, x: 0, stagger: 0.3, duration: 0.7 },
-        "-=0.5"
+        ctaRef.current,
+        { autoAlpha: 0, y: 12 },
+        { autoAlpha: 1, y: 0, stagger: 0.1, duration: 0.45 },
+        '-=0.35'
       )
       .fromTo(
         imageRef.current,
-        { autoAlpha: 0, x: 40 },
-        { autoAlpha: 1, x: 0, duration: 1 },
-        "-=1.2"
+        { autoAlpha: 0, x: 24 },
+        { autoAlpha: 1, x: 0, duration: 0.8 },
+        '-=0.25'
       );
   }, { scope: sectionRef });
 
   return (
-    <main className="mb-6 min-h-[80vh] text-white">
+    <main className="hero min-h-[100svh] text-white">
       <section
         ref={sectionRef}
-        className="first flex flex-col gap-[40px] justify-center items-center lg:flex-row lg:justify-around lg:gap-[12px] my-[10vh] min-h-[80vh]"
+        className="section-shell first flex flex-col gap-12 justify-center items-center lg:flex-row lg:justify-between lg:gap-16 min-h-[100svh]"
       >
         <div
           ref={leftRef}
-          className="leftSection w-[90%] lg:w-[60%] p-4 lg:p-8 text-lg lg:text-xl text-center max-h-[50vh] lg:max-h-full"
+          className="leftSection w-full lg:w-[62%] p-0 text-center lg:text-left"
         >
-          Hi! my name is <span className="text-violet-400 text-4xl">{name}</span>
-          <div className="mt-2">
-            and I am a passionate
-            <div className="text-violet-400 text-lg md:text-2xl lg:text-3xl mt-2">
-              <span ref={el}></span>
-            </div>
+          <p className="section-kicker mb-5">FULL-STACK DEVELOPER · {name}</p>
+          <h1 className="hero-title">I build fast, scalable web products.</h1>
+          <p className="hero-copy prose-width mt-6">
+            I am {name}, a full-stack developer focused on responsive interfaces, reliable APIs, and thoughtful AI-powered experiences.
+          </p>
+          <p className="hero-role mt-5 text-white">Expertise: <span className="text-[var(--color-primary)]" ref={el} /></p>
+          <div ref={ctaRef} className="hero-actions flex flex-wrap justify-center lg:justify-start gap-3 mt-8">
+            <a className="button button-primary" href="#projects">View selected work</a>
+            <a className="button button-secondary" href={resume} target="_blank" rel="noreferrer">Download resume</a>
           </div>
-          <div className="text-xs mt-4 text-red-600 text-center">
-            Code. Create. Inspire. Crafting the web
-            <span className="flex mt-2 items-center justify-center">
-              one line of code at a time. &nbsp;
-              <span ref={emojiRef} className="text-xl inline-block">
-                😁
-              </span>
-            </span>
-          </div>
-          <div ref={ctaRef} className="flex justify-center">
-            <a href={`${resume}`} target="_blank" rel="noreferrer">
-              <button className="cv border-2 border-red-500 rounded-full hover:font-bold hover:shadow-gray-600 shadow-inner text-center bg-transparent hover:bg-white text-blue-500 p-3 w-70 mx-auto mt-6">
-                Check Resume
-              </button>
-            </a>
+          <div className="proof-row mt-8" aria-label="Core technologies">
+            <span>React</span><span>Next.js</span><span>Node.js</span><span>AI</span>
           </div>
         </div>
 
         <div
           ref={imageRef}
-          className="rightSection flex justify-center items-center w-[90%] lg:w-[40%] my-8 lg:my-0 max-h-[30vh] lg:max-h-full p-0"
+          className="rightSection flex justify-center items-center w-full lg:w-[38%] p-0"
         >
-          <Tilt>
-            <img
-              src="images\\photo.jpeg"
-              alt="coder"
-              className="rounded-full border-4 border-red-500 w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-cover object-top"
-            />
-          </Tilt>
+          <img
+            src="/images/photo.jpeg"
+            alt="Portrait of M. Ahsin Ali"
+            className="hero-portrait w-[220px] h-[280px] sm:w-[280px] sm:h-[350px] object-cover object-top"
+            width="280"
+            height="350"
+          />
         </div>
       </section>
       <hr className="mx-20 relative" />
