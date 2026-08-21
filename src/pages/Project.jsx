@@ -10,24 +10,85 @@ const Project = () => {
   const [showAll, setShowAll] = useState(false);
   const containerRef = useRef(null);
 
-  useGSAP(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    gsap.fromTo(
-      [".projects-heading", ...gsap.utils.toArray(".project-card")],
-      reduceMotion ? { autoAlpha: 1 } : { autoAlpha: 0, y: 24 },
-      {
-        autoAlpha: 1,
-        y: 0,
-        duration: reduceMotion ? 0 : 0.6,
-        stagger: reduceMotion ? 0 : 0.08,
-        ease: "power3.out",
-        scrollTrigger: reduceMotion ? undefined : {
+  useGSAP(
+    () => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      if (reduceMotion) {
+        gsap.set(
+          [
+            ".section-kicker",
+            ".projects-heading",
+            ".project-card",
+            ".all-proj",
+          ],
+          { autoAlpha: 1, clearProps: "transform" },
+        );
+        return;
+      }
+
+      // Header animate
+      const headerTl = gsap.timeline({
+        scrollTrigger: {
           trigger: ".projects-heading",
           start: "top 85%",
+          toggleActions: "play none none reverse",
         },
-      }
-    );
-  }, { dependencies: [showAll], scope: containerRef });
+      });
+
+      headerTl
+        .fromTo(
+          ".section-kicker",
+          { autoAlpha: 0, y: 15 },
+          { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" },
+        )
+        .fromTo(
+          ".projects-heading",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" },
+          "-=0.25",
+        );
+
+      // Cards animate - individually on scroll!
+      const cards = gsap.utils.toArray(".project-card");
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { autoAlpha: 0, y: 30 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+      });
+
+      // Animate the button at the bottom
+      gsap.fromTo(
+        ".all-proj",
+        { autoAlpha: 0, y: 15 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".all-proj",
+            start: "top 92%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+    },
+    { dependencies: [showAll], scope: containerRef },
+  );
 
   const displayedProjects = showAll ? projects : projects.slice(0, 5);
 
@@ -47,8 +108,12 @@ const Project = () => {
   };
 
   return (
-    <main ref={containerRef} className="mb-6 min-h-[70vh] text-white p-0" name="projects">
-      <section className="fifth w-[90%] mx-auto my-[10vh] flex flex-col justify-center gap-6">
+    <main
+      ref={containerRef}
+      className="mb-6 min-h-[70vh] text-white p-0"
+      name="projects"
+    >
+      <section className="section-shell flex flex-col justify-center gap-6">
         <div className="w-full">
           <p className="section-kicker">SELECTED WORK</p>
           <h1 className="projects-heading mt-3 text-4xl lg:text-5xl font-semibold">
@@ -59,37 +124,74 @@ const Project = () => {
           {displayedProjects.map((project, index) => {
             const isSourceLink = project.link?.includes("github.com");
             return (
-              <article key={project.id} className={`project-card surface overflow-hidden flex flex-col ${index === 0 ? "lg:col-span-2 lg:grid lg:grid-cols-2" : ""}`}>
+              <article
+                key={project.id}
+                className={`project-card surface overflow-hidden flex flex-col ${index === 0 ? "lg:col-span-2 lg:grid lg:grid-cols-2" : ""}`}
+              >
                 <div className="project-media aspect-[16/9] overflow-hidden">
-                  <img src={project.image} alt={`${project.title} project preview`} loading={index === 0 ? "eager" : "lazy"} className="h-full w-full object-cover" />
+                  <img
+                    src={project.image}
+                    alt={`${project.title} project preview`}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div className="flex flex-1 flex-col gap-4 p-5 lg:p-7">
                   <div>
                     <p className="section-kicker">{project.category}</p>
-                    <h3 className="mt-2 text-2xl font-semibold text-white">{project.title}</h3>
+                    <h3 className="mt-2 text-2xl font-semibold text-white">
+                      {project.title}
+                    </h3>
                   </div>
-                  <p className="project-summary text-sm text-[var(--color-text-muted)]">{project.description}</p>
+                  <p className="project-summary text-sm text-[var(--color-text-muted)]">
+                    {project.description}
+                  </p>
                   <div className="flex flex-wrap gap-x-3 gap-y-1">
                     {project.tags.map((tag) => {
                       return (
-                        <span key={tag} className="text-xs text-[var(--color-primary)]">
+                        <span
+                          key={tag}
+                          className="text-xs text-[var(--color-primary)]"
+                        >
                           {tag}
                         </span>
-                      )
+                      );
                     })}
                   </div>
                   <div className="mt-auto flex flex-wrap gap-4 pt-2 text-sm font-semibold">
-                    {project.link && <a href={project.link} target="_blank" rel="noreferrer" aria-label={`${isSourceLink ? "Source code" : "Live demo"} for ${project.title}`}>{isSourceLink ? "Source code" : "Live demo"} <span aria-hidden="true">↗</span></a>}
-                    {project.github && <a href={project.github} target="_blank" rel="noreferrer" aria-label={`Source code for ${project.title}`}>Source code <span aria-hidden="true">↗</span></a>}
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${isSourceLink ? "Source code" : "Live demo"} for ${project.title}`}
+                      >
+                        {isSourceLink ? "Source code" : "Live demo"}{" "}
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Source code for ${project.title}`}
+                      >
+                        Source code <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>
-            )
+            );
           })}
         </div>
 
         <div className="all-proj flex justify-center">
-          <button className="button button-secondary mt-6" onClick={handleToggleShowAll}>
+          <button
+            className="button button-secondary mt-6"
+            onClick={handleToggleShowAll}
+          >
             <span>{showAll ? "Show Less" : "Show All"}</span>
           </button>
         </div>

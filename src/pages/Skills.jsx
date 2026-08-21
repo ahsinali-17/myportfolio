@@ -39,20 +39,67 @@ const Services = () => {
 
   useGSAP(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const tl = gsap.timeline({
+    if (reduceMotion) {
+      gsap.set(['.section-kicker', '.skills-title', '.skills-intro', '.skill-card', '.skill-item'], { autoAlpha: 1, clearProps: 'transform' });
+      return;
+    }
+
+    // Header reveal
+    const headerTl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".skills-grid",
-        start: "top 85%",
-        toggleActions: "play none none reverse",
-      },
+        trigger: '.skills-title',
+        start: 'top 85%',
+        toggleActions: 'play none none reverse',
+      }
     });
 
-    tl.fromTo(
-      [".skills-title", ".skills-intro", ".skill-card"],
-      reduceMotion ? { autoAlpha: 1 } : { autoAlpha: 0, y: 18 },
-      { autoAlpha: 1, y: 0, duration: reduceMotion ? 0 : 0.5, stagger: reduceMotion ? 0 : 0.08, ease: "power3.out" },
+    headerTl.fromTo(
+      '.section-kicker',
+      { autoAlpha: 0, y: 15 },
+      { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power3.out' }
+    )
+    .fromTo(
+      '.skills-title',
+      { autoAlpha: 0, y: 20 },
+      { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+      '-=0.25'
+    )
+    .fromTo(
+      '.skills-intro',
+      { autoAlpha: 0, y: 15 },
+      { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+      '-=0.35'
     );
-  }, sectionRef);
+
+    // Cards reveal & internal stagger
+    const cards = gsap.utils.toArray('.skill-card');
+    cards.forEach((card) => {
+      const cardTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        }
+      });
+
+      cardTl.fromTo(
+        card,
+        { autoAlpha: 0, y: 24 },
+        { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power3.out' }
+      );
+
+      const items = card.querySelectorAll('.skill-item');
+      if (items.length > 0) {
+        cardTl.fromTo(
+          items,
+          { autoAlpha: 0, y: 10 },
+          { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power3.out' },
+          '-=0.35'
+        );
+      }
+    });
+
+  }, { scope: sectionRef });
 
   return (
     <main ref={sectionRef} className="mb-6 min-h-[30vh] text-white p-0">
@@ -85,7 +132,7 @@ const Services = () => {
                     return (
                       <div
                         key={index}
-                        className="flex items-center gap-3 border-t border-[var(--color-border)] py-3"
+                        className="skill-item flex items-center gap-3 border-t border-[var(--color-border)] py-3"
                       >
                         <img src={item.image} alt="" aria-hidden="true" loading="lazy" width={30} height={30} className="h-8 w-8 rounded-md object-contain" />
                         <div className="min-w-0 flex-1">

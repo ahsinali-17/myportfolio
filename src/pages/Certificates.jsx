@@ -12,21 +12,49 @@ const Certificates = () => {
   useGSAP(
     () => {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      gsap.fromTo(
-        [".cert-heading", ...gsap.utils.toArray(".cert-card")],
-        reduceMotion ? { autoAlpha: 1 } : { autoAlpha: 0, y: 20 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: reduceMotion ? 0 : 0.55,
-          stagger: reduceMotion ? 0 : 0.08,
-          ease: "power3.out",
-          scrollTrigger: reduceMotion ? undefined : {
-            trigger: ".cert-heading",
-            start: "top 85%",
-          },
-        },
+      if (reduceMotion) {
+        gsap.set(['.section-kicker', '.cert-heading', '.cert-card'], { autoAlpha: 1, clearProps: 'transform' });
+        return;
+      }
+
+      const headingTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.cert-heading',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        }
+      });
+
+      headingTl.fromTo(
+        '.section-kicker',
+        { autoAlpha: 0, y: 15 },
+        { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power3.out' }
+      )
+      .fromTo(
+        '.cert-heading',
+        { autoAlpha: 0, y: 20 },
+        { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power3.out' },
+        '-=0.25'
       );
+
+      const cards = gsap.utils.toArray('.cert-card');
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { autoAlpha: 0, y: 30 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              toggleActions: 'play none none reverse',
+            }
+          }
+        );
+      });
     },
     { scope: containerRef },
   );
@@ -37,7 +65,7 @@ const Certificates = () => {
       className="mb-6 min-h-[70vh] text-white p-0"
       name="certifictes"
     >
-      <section className="section-shell fifth flex flex-col justify-center gap-6">
+      <section className="section-shell flex flex-col justify-center gap-6">
         <div>
           <p className="section-kicker">CREDENTIALS</p>
           <h1 className="cert-heading mt-3 text-4xl lg:text-5xl font-semibold">
