@@ -1,12 +1,12 @@
 import { Suspense, lazy, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import BgAnimation from "./components/HeroBgAnimation";
 import Home from "./pages/Home";
 import AskAboutMeButton from "./components/AskAboutMeButton";
 import { Routes, Route } from "react-router-dom";
 import Loader from "./components/Loader";
 import LocomotiveScroll from "locomotive-scroll";
 import DynamicBg from "../src/components/DynamicBg";
+import CustomCursor from "./components/CustomCursor";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -32,7 +32,6 @@ const MainSections = () => (
   <div className="relative overflow-x-hidden">
     <Loader />
     <Navbar />
-    <BgAnimation />
     <DynamicBg />
     <div id="home">
       <Home />
@@ -111,17 +110,20 @@ const App = () => {
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<MainSections />} />
-      <Route
-        path="/chat"
-        element={
-          <Suspense fallback={<LoadingSpinner />}>
-            <Chat />
-          </Suspense>
-        }
-      />
-    </Routes>
+    <>
+      <CustomCursor />
+      <Routes>
+        <Route path="/" element={<MainSections />} />
+        <Route
+          path="/chat"
+          element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <Chat />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </>
   );
 };
 

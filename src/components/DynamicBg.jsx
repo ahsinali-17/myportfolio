@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BgAnimation from "./HeroBgAnimation";
+import InteractiveCanvas from "./InteractiveCanvas";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,129 +16,148 @@ const DynamicBg = () => {
       ).matches;
       if (reduceMotion) {
         gsap.set(".dyn-blob-1", {
-          xPercent: 10,
-          yPercent: 10,
+          left: "10vw",
+          top: "10vh",
           scale: 1,
           backgroundColor: "var(--color-primary)",
         });
         gsap.set(".dyn-blob-2", {
-          xPercent: 60,
-          yPercent: 60,
+          left: "60vw",
+          top: "60vh",
           scale: 1,
           backgroundColor: "var(--color-secondary)",
         });
         return;
       }
 
-      // Positions and colors for each section
+      // Positions and colors for each section - alternating viewport coordinates for full screen crossover sweep
       const sectionStates = [
         {
           id: "#home",
-          blob1: { xPercent: 80, yPercent: 15, scale: 1.0, color: "#5eead4" }, // Teal
-          blob2: { xPercent: 10, yPercent: 70, scale: 0.8, color: "#f6a66d" }, // Orange
+          blob1: { left: 80, top: 15, scale: 1.0, color: "#5eead4" }, // Right
+          blob2: { left: 70, top: 20, scale: 0.9, color: "#f6a66d" }, // Left
         },
         {
           id: "#about",
-          blob1: { xPercent: 15, yPercent: 20, scale: 1.3, color: "#f6a66d" }, // Orange
-          blob2: { xPercent: 75, yPercent: 65, scale: 1.1, color: "#5eead4" }, // Teal
+          blob1: { left: 10, top: 60, scale: 1.2, color: "#945dd6" }, // Left
+          blob2: { left: 15, top: 65, scale: 1.1, color: "#5eead4" }, // Right
         },
         {
           id: "#skills",
-          blob1: { xPercent: 70, yPercent: 55, scale: 0.9, color: "#5eead4" }, // Teal
-          blob2: { xPercent: 15, yPercent: 25, scale: 1.2, color: "#fca5a5" }, // Rose/Danger
+          blob1: { left: 80, top: 25, scale: 1.1, color: "#ec4899" }, // Right
+          blob2: { left: 75, top: 20, scale: 1.2, color: "#f6a66d" }, // Left
         },
         {
           id: "#projects",
-          blob1: { xPercent: 75, yPercent: 70, scale: 1.4, color: "#86efac" }, // Green
-          blob2: { xPercent: 10, yPercent: 15, scale: 0.7, color: "#5eead4" }, // Teal
+          blob1: { left: 10, top: 65, scale: 1.3, color: "#3b82f6" }, // Left
+          blob2: { left: 15, top: 60, scale: 1.0, color: "#86efac" }, // Mint Green
         },
         {
           id: "#certificates",
-          blob1: { xPercent: 20, yPercent: 65, scale: 1.1, color: "#f6a66d" }, // Orange
-          blob2: { xPercent: 70, yPercent: 25, scale: 1.0, color: "#5eead4" }, // Teal
+          blob1: { left: 75, top: 20, scale: 1.2, color: "#f59e0b" }, // Right
+          blob2: { left: 70, top: 22, scale: 1.1, color: "#ec4899" }, // Magenta
         },
         {
           id: "#experience",
-          blob1: { xPercent: 45, yPercent: 30, scale: 1.2, color: "#5eead4" }, // Teal
-          blob2: { xPercent: 50, yPercent: 75, scale: 1.2, color: "#f6a66d" }, // Orange
+          blob1: { left: 10, top: 65, scale: 1.2, color: "#8b5cf6" }, // Left
+          blob2: { left: 15, top: 60, scale: 1.3, color: "#3b82f6" }, // Vibrant Blue
         },
         {
           id: "#contact",
-          blob1: { xPercent: 45, yPercent: 45, scale: 1.5, color: "#f6a66d" }, // Orange
-          blob2: { xPercent: 75, yPercent: 75, scale: 0.7, color: "#5eead4" }, // Teal
+          blob1: { left: 80, top: 25, scale: 1.4, color: "#f6a66d" }, // Right
+          blob2: { left: 85, top: 20, scale: 0.9, color: "#fca5a5" }, // Rose Red
         },
       ];
 
       const isMainPage = !!document.querySelector("#home");
 
-      if (!isMainPage) {
-        // Idle drift mode (e.g. Chat page)
-        const animateIdle = () => {
-          gsap.to(".dyn-blob-1", {
-            xPercent: "random(10, 80)",
-            yPercent: "random(10, 80)",
-            scale: "random(0.8, 1.4)",
-            backgroundColor: () =>
-              gsap.utils.random(["#5eead4", "#f6a66d", "#fca5a5", "#86efac"]),
-            duration: "random(8, 14)",
-            ease: "sine.inOut",
-            onComplete: animateIdle,
-          });
-
-          gsap.to(".dyn-blob-2", {
-            xPercent: "random(10, 80)",
-            yPercent: "random(10, 80)",
-            scale: "random(0.8, 1.4)",
-            backgroundColor: () =>
-              gsap.utils.random(["#5eead4", "#f6a66d", "#fca5a5", "#86efac"]),
-            duration: "random(8, 14)",
-            ease: "sine.inOut",
-            onComplete: animateIdle,
-          });
-        };
-
-        animateIdle();
-        return;
-      }
-
-      // Setup triggers for each section on the main page
-      sectionStates.forEach((state) => {
-        const element = document.querySelector(state.id);
-        if (element) {
-          ScrollTrigger.create({
-            trigger: element,
-            start: "top 55%",
-            end: "bottom 45%",
-            onEnter: () => transitionToState(state),
-            onEnterBack: () => transitionToState(state),
-          });
-        }
-      });
-
       function transitionToState(state) {
         gsap.to(".dyn-blob-1", {
-          xPercent: state.blob1.xPercent,
-          yPercent: state.blob1.yPercent,
+          left: `${state.blob1.left}vw`,
+          top: `${state.blob1.top}vh`,
           scale: state.blob1.scale,
           backgroundColor: state.blob1.color,
-          duration: 1.8,
+          duration: 2.2,
           ease: "power2.out",
           overwrite: "auto",
         });
 
         gsap.to(".dyn-blob-2", {
-          xPercent: state.blob2.xPercent,
-          yPercent: state.blob2.yPercent,
+          left: `${state.blob2.left}vw`,
+          top: `${state.blob2.top}vh`,
           scale: state.blob2.scale,
           backgroundColor: state.blob2.color,
-          duration: 1.8,
+          duration: 2.2,
           ease: "power2.out",
           overwrite: "auto",
         });
       }
 
-      // Set initial position
-      transitionToState(sectionStates[0]);
+      // Idle Mode animation
+      const animateIdle = () => {
+        gsap.to(".dyn-blob-1", {
+          left: `${gsap.utils.random(10, 85)}vw`,
+          top: `${gsap.utils.random(10, 85)}vh`,
+          scale: gsap.utils.random(0.8, 1.4),
+          backgroundColor: gsap.utils.random([
+            "#5eead4",
+            "#f6a66d",
+            "#fca5a5",
+            "#86efac",
+          ]),
+          duration: gsap.utils.random(3, 8),
+          ease: "sine.inOut",
+          onComplete: animateIdle,
+        });
+
+        gsap.to(".dyn-blob-2", {
+          left: `${gsap.utils.random(10, 85)}vw`,
+          top: `${gsap.utils.random(10, 85)}vh`,
+          scale: gsap.utils.random(0.8, 1.4),
+          backgroundColor: gsap.utils.random([
+            "#5eead4",
+            "#f6a66d",
+            "#fca5a5",
+            "#86efac",
+          ]),
+          duration: gsap.utils.random(8, 12),
+          ease: "sine.inOut",
+          onComplete: animateIdle,
+        });
+      };
+
+      if (!isMainPage) {
+        animateIdle();
+      } else {
+        // Setup triggers for each section on the main page
+        sectionStates.forEach((state) => {
+          const element = document.querySelector(state.id);
+          if (element) {
+            ScrollTrigger.create({
+              trigger: element,
+              start: "top 50%",
+              end: "bottom 50%",
+              onToggle: (self) => {
+                if (self.isActive) {
+                  transitionToState(state);
+                }
+              },
+            });
+          }
+        });
+
+        // Set initial position
+        transitionToState(sectionStates[0]);
+      }
+
+      // Force recalculation of ScrollTrigger coordinates to account for lazy-loaded pages loading in
+      const refreshTimer1 = setTimeout(() => ScrollTrigger.refresh(), 800);
+      const refreshTimer2 = setTimeout(() => ScrollTrigger.refresh(), 2500);
+
+      return () => {
+        clearTimeout(refreshTimer1);
+        clearTimeout(refreshTimer2);
+      };
     },
     { scope: containerRef },
   );
@@ -152,8 +171,8 @@ const DynamicBg = () => {
       <div className="dyn-blob-1 absolute w-[350px] h-[350px] rounded-full bg-[var(--color-primary)] opacity-20 blur-[130px] will-change-transform left-0 top-0"></div>
       <div className="dyn-blob-2 absolute w-[400px] h-[400px] rounded-full bg-[var(--color-secondary)] opacity-15 blur-[150px] will-change-transform left-0 top-0"></div>
 
-      {/* SVG Tech Grid */}
-      <BgAnimation />
+      {/* Interactive 3D Particles */}
+      <InteractiveCanvas />
     </div>
   );
 };

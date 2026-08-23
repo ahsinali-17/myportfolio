@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import Typed from 'typed.js';
+import Tilt from 'react-parallax-tilt';
 import './Home.css';
 import { Bio } from '../data/Data';
 
@@ -93,13 +94,25 @@ const Home = () => {
           ref={imageRef}
           className="rightSection flex justify-center items-center w-full lg:w-[38%] p-0"
         >
-          <img
-            src="/images/photo.jpeg"
-            alt="Portrait of M. Ahsin Ali"
-            className="hero-portrait w-[220px] h-[280px] sm:w-[280px] sm:h-[350px] object-cover object-top"
-            width="280"
-            height="350"
-          />
+          <Tilt
+            tiltMaxAngleX={15}
+            tiltMaxAngleY={15}
+            perspective={800}
+            glareEnable={true}
+            glareMaxOpacity={0.3}
+            glareColor="#ffffff"
+            glarePosition="all"
+            glareBorderRadius="45% 45% 12px 12px"
+            className="will-change-transform"
+          >
+            <img
+              src="/images/photo.jpeg"
+              alt="Portrait of M. Ahsin Ali"
+              className="hero-portrait w-[220px] h-[280px] sm:w-[280px] sm:h-[350px] object-cover object-top cursor-pointer"
+              width="280"
+              height="350"
+            />
+          </Tilt>
         </div>
       </section>
       <hr className="mx-20 relative" />
