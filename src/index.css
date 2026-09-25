@@ -168,3 +168,61 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+/* Folder UI Styling */
+.folder-container {
+  background: rgba(13, 27, 31, 0.85);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+}
+
+.folder-tab-bar {
+  background: rgba(7, 17, 20, 0.95);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.folder-tab {
+  position: relative;
+  transition: all 0.25s ease;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.folder-tab.active {
+  background: rgba(16, 37, 42, 0.95);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border-strong);
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 -4px 15px rgba(94, 234, 212, 0.12);
+}
+
+.folder-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-primary);
+}
+
+.folder-tab:hover:not(.active) {
+  background: rgba(21, 52, 58, 0.5);
+  color: #fff;
+}
+
+.ai-badge {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(99, 102, 241, 0.2));
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #d8b4fe;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.folder-tag-pill {
+  background: rgba(94, 234, 212, 0.1);
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  color: var(--color-primary);
+}
+
+

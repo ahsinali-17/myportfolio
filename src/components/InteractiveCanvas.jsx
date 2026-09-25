@@ -1,6 +1,6 @@
-import { useRef, useState, Suspense } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
+import { useRef, useState, Suspense } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Points, PointMaterial } from "@react-three/drei";
 
 // Pure mathematical sphere distribution helper to avoid external module ESM import quirks
 const generateInSphere = (count, radius) => {
@@ -18,7 +18,7 @@ const generateInSphere = (count, radius) => {
   return positions;
 };
 
-function ParticleStars({ color1 = '#5eead4', color2 = '#f6a66d' }) {
+function ParticleStars({ color1 = "#5eead4", color2 = "#f6a66d" }) {
   const ref1 = useRef();
   const ref2 = useRef();
 
@@ -72,7 +72,9 @@ function ParticleStars({ color1 = '#5eead4', color2 = '#f6a66d' }) {
 }
 
 const InteractiveCanvas = () => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   if (reduceMotion) {
     return null;
@@ -83,7 +85,13 @@ const InteractiveCanvas = () => {
       <Canvas
         camera={{ position: [0, 0, 1] }}
         gl={{ alpha: true, antialias: true }}
-        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+        }}
       >
         <Suspense fallback={null}>
           <ParticleStars />

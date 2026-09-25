@@ -111,7 +111,7 @@ const App = () => {
 
   return (
     <>
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <Routes>
         <Route path="/" element={<MainSections />} />
         <Route
