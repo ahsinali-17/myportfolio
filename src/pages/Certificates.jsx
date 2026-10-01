@@ -20,8 +20,11 @@ const Certificates = () => {
       const headingTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.cert-heading',
+          // Start as soon as the heading enters the viewport instead of waiting
+          // until it is much farther down the page.
           start: 'top 85%',
           toggleActions: 'play none none reverse',
+          invalidateOnRefresh: true,
         }
       });
 
@@ -49,8 +52,9 @@ const Certificates = () => {
             ease: 'power3.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 88%',
+              start: 'top 90%',
               toggleActions: 'play none none reverse',
+              invalidateOnRefresh: true,
             }
           }
         );

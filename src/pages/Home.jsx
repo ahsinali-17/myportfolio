@@ -76,7 +76,7 @@ const Home = () => {
           className="leftSection w-full lg:w-[62%] p-0 text-center lg:text-left"
         >
           <p className="section-kicker mb-5">FULL-STACK DEVELOPER · {name}</p>
-          <h1 className="hero-title">I build fast, scalable web products.</h1>
+          <h1 className="hero-title w-full ">I build fast, scalable web products.</h1>
           <p className="hero-copy prose-width mt-6">
             I am {name}, a full-stack developer focused on responsive interfaces, reliable APIs, and thoughtful AI-powered experiences.
           </p>

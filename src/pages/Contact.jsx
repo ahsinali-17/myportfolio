@@ -211,7 +211,7 @@ const ContactForm = () => {
           <span className="text-[var(--color-secondary)] font-semibold">
             AA
           </span>
-          portfolio &#169; 2025. All rights reserved.
+          portfolio &#169; {new Date().getFullYear()}. All rights reserved.
         </span>
       </footer>
     </main>

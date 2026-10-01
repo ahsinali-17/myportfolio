@@ -8,6 +8,7 @@
   font-size: clamp(2.75rem, 7vw, 6.5rem);
   font-weight: 700;
   line-height: 1.1;
+  margin: 0 auto;
 }
 
 .hero-copy {
