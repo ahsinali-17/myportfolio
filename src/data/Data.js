@@ -311,20 +311,20 @@ export const projects = [
     challenges: "Fine-tuning a custom Detection Transformer and YOLO model, ensuring frontend state integrity via TanStack Query; optimizing PDF report generation speed using parallel fetching, resolving dependency conflicts in headless Docker deployments.",
     duration: "6 months",
   },
-  {
-    id: 1,
-    title: "Employeed",
-    description:
-      "A full stack job portal app that enables users to search and apply for job openings, featuring a responsive UI, filterable listings, and an application drawer built using supabase, clerk, React and shadcn.",
-    image: "/projects/employeed.jpg",
-    tags: ["React Js", "Supabase", "Clerk", "Shadcn", "zod"],
-    category: "web app",
-    link: "https://employeed.vercel.app/",
-    features: ["Job search", "Filterable listings", "User authentication", "Application management"],
-    challenges: "Integrating Supabase with Clerk for authentication and handling dynamic queries efficiently.",
-    duration: "6 weeks",
-  },
    {
+    id: 1,
+    title: "WealthBrain AI",
+    isAi: true,
+    description: "An AI-powered cross-platform financial tracking and intelligent budget management mobile app developed with React Native and Expo. Integrates AI financial analytics, automated budget forecasting, income & expense logging, interactive charts, and transaction history.",
+    image: "/projects/wealth-manager.png",
+    tags: ["React Native", "Expo Router", "Gemini SDK", "Zustand", "Supabase", "Tanstack Query","Nativewind CSS", "React Native Reanimated", "Expo Animations"],
+    category: "mobile app, AI",
+    link: "https://github.com/ahsinali-17/wealth-manager-mobile-app",
+    features: ["AI Financial Insights & Analytics", "Income & Expense Tracking", "Interactive Financial Charts", "Smart Budget Category Breakdown", "Cloud Transaction Sync"],
+    challenges: "Building high-performance AI analytics chart visualizers with real-time state updates across mobile viewports.",
+    duration: "4 weeks",
+  },
+  {
     id: 2,
     title: "DocMind AI",
     isAi: true,
@@ -342,6 +342,20 @@ export const projects = [
   },
   {
     id: 3,
+    title: "Employeed",
+    description:
+      "A full stack job portal app that enables users to search and apply for job openings, featuring a responsive UI, filterable listings, and an application drawer built using supabase, clerk, React and shadcn.",
+    image: "/projects/employeed.jpg",
+    tags: ["React Js", "Supabase", "Clerk", "Shadcn", "zod"],
+    category: "web app",
+    link: "https://employeed.vercel.app/",
+    features: ["Job search", "Filterable listings", "User authentication", "Application management"],
+    challenges: "Integrating Supabase with Clerk for authentication and handling dynamic queries efficiently.",
+    duration: "6 weeks",
+  },
+   
+  {
+    id: 4,
     title: "connectify",
     description:
       "Built a modern, feature-rich social media platform using MERN. The app includes functionalities such as user authentication, profile management, content creation (posts, images, and videos) and interactive features like likes, comments, add friend and many more With a clean and responsive UI",
@@ -354,7 +368,19 @@ export const projects = [
     duration: "1 month",
   },
   {
-    id: 4,
+    id: 5,
+    title: "Get Roofed",
+    description: "A feature-rich real estate mobile application built using React Native and Expo. Enables users to explore property listings, filter by location & amenities, manage favorites, and authenticate securely with Clerk and Supabase.",
+    image: "/projects/get-roofed.png",
+    tags: ["React Native", "Expo Router", "Supabase", "Clerk", "AsyncStorage", "Nativewind CSS"],
+    category: "mobile app",
+    link: "https://github.com/ahsinali-17/get-roofed",
+    features: ["Property Discovery & Filters", "User Auth via Clerk", "Saved & Bookmarked Properties", "Supabase Database Integration"],
+    challenges: "Structuring cross-platform navigation with Expo Router, implementing secure state persistence with AsyncStorage, and integrating Clerk authentication with Supabase RLS policies.",
+    duration: "3 weeks",
+  },
+  {
+    id: 6,
     title: "BackMyProjects",
     description: "A crowdfunding Next.js app, featuring Razorpay payment gateway integration for secure transactions.",
     image: "/projects/backMyProject.jpg",
@@ -366,7 +392,7 @@ export const projects = [
     duration: "2 weeks",
   },
   {
-    id: 5,
+    id: 7,
     title: "Uber-clone",
     description: "Uber-clone is a modern ride-booking web app with real-time location tracking, user authentication, and responsive design.",
     image: "/projects/uber.webp",
@@ -378,7 +404,7 @@ export const projects = [
     duration: "6 weeks",
   },
   {
-    id: 6,
+    id: 8,
     title: "StripeStore",
     description: "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
     image: "/projects/stripeStore.jfif",
@@ -390,7 +416,7 @@ export const projects = [
     duration: "2 weeks",
   },
   {
-    id: 7,
+    id: 9,
     title: "Password manager",
     description: "A react app which can remember provided passwords along with the username and website's URL...",
     image: "/projects/passwordManager.jpg",
@@ -403,7 +429,7 @@ export const projects = [
   },
  
   {
-    id: 8,
+    id: 10,
     title: "Spotify Clone",
     description: "Spotify clone with a functional music player and responsive audio controls.",
     image: "/projects/spotify.jpg",
@@ -414,31 +440,8 @@ export const projects = [
     challenges: "Handling audio playback and managing UI interactions with vanilla JS.",
     duration: "3 weeks",
   },
-    {
-    id: 9,
-    title: "WealthBrain AI",
-    isAi: true,
-    description: "An AI-powered cross-platform financial tracking and intelligent budget management mobile app developed with React Native and Expo. Integrates AI financial analytics, automated budget forecasting, income & expense logging, interactive charts, and transaction history.",
-    image: "/projects/wealth-manager.png",
-    tags: ["React Native", "Expo Router", "Gemini SDK", "Zustand", "Supabase", "Tanstack Query","Nativewind CSS", "React Native Reanimated", "Expo Animations"],
-    category: "mobile app, AI",
-    link: "https://github.com/ahsinali-17/wealth-manager-mobile-app",
-    features: ["AI Financial Insights & Analytics", "Income & Expense Tracking", "Interactive Financial Charts", "Smart Budget Category Breakdown", "Cloud Transaction Sync"],
-    challenges: "Building high-performance AI analytics chart visualizers with real-time state updates across mobile viewports.",
-    duration: "4 weeks",
-  },
-  {
-    id: 10,
-    title: "Get Roofed",
-    description: "A feature-rich real estate mobile application built using React Native and Expo. Enables users to explore property listings, filter by location & amenities, manage favorites, and authenticate securely with Clerk and Supabase.",
-    image: "/projects/get-roofed.png",
-    tags: ["React Native", "Expo Router", "Supabase", "Clerk", "AsyncStorage", "Nativewind CSS"],
-    category: "mobile app",
-    link: "https://github.com/ahsinali-17/get-roofed",
-    features: ["Property Discovery & Filters", "User Auth via Clerk", "Saved & Bookmarked Properties", "Supabase Database Integration"],
-    challenges: "Structuring cross-platform navigation with Expo Router, implementing secure state persistence with AsyncStorage, and integrating Clerk authentication with Supabase RLS policies.",
-    duration: "3 weeks",
-  },
+   
+  
   {
     id: 11,
     title: "G72 Studio Clone",
