@@ -311,6 +311,35 @@ export const projects = [
     challenges: "Fine-tuning a custom Detection Transformer and YOLO model, ensuring frontend state integrity via TanStack Query; optimizing PDF report generation speed using parallel fetching, resolving dependency conflicts in headless Docker deployments.",
     duration: "6 months",
   },
+  {
+  id: 15,
+  title: "CityPulse Triage Hub",
+  isAi: true,
+  description: "A high-performance smart city infrastructure hub built with Next.js App Router and serverless Neon Postgres, unifying automated AI image triage, geospatial proximity matching, and offline-first PWA field synchronization.",
+  image: "/projects/citypulse.png",
+  tags: [
+    "Next.js",
+    "TypeScript",
+    "Gemini SDK",
+    "Neon Postgres",
+    "Drizzle ORM",
+    "Tailwind CSS",
+    "Leaflet",
+    "Dexie.js",
+    "jsPDF"
+  ],
+  category: "web app, AI",
+  link: "https://github.com/ahsinali-17/city-pulse",
+  features: [
+   "4-Persona Role-Based Access Control (RBAC)",
+    "Automated Department Routing & Review Queue",
+    "Interactive Leaflet GIS Incident Mapping",
+    "Offline-Capable PWA Task Queue for Field Workers",
+    "Automated Municipal PDF Report Generation"
+  ],
+  challenges: "Preventing data leakage across 4 distinct user roles by injecting server-side SQL predicates at the ORM layer; managing append-only event streams (`ticket_events`) during department archival without foreign-key deadlocks; optimizing Core Web Vitals via route streaming and sub-15ms serverless database lookups.",
+  duration: "3 weeks",
+},
    {
     id: 1,
     title: "WealthBrain AI",
