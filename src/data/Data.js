@@ -329,7 +329,7 @@ export const projects = [
     "jsPDF"
   ],
   category: "web app, AI",
-  link: "https://github.com/ahsinali-17/city-pulse",
+  link: "https://city-pulse-snowy.vercel.app/",
   features: [
    "4-Persona Role-Based Access Control (RBAC)",
     "Automated Department Routing & Review Queue",
