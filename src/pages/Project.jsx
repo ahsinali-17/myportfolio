@@ -93,6 +93,32 @@ const Project = () => {
     ? filteredProjects
     : filteredProjects.slice(0, 6);
 
+  useEffect(() => {
+    const projectContainer = containerRef.current;
+
+    if (!projectContainer) return;
+
+    let frameId;
+
+    const refreshScrollLayout = () => {
+      cancelAnimationFrame(frameId);
+
+      frameId = requestAnimationFrame(() => {
+        window.locoScroll?.lenisInstance?.resize();
+        ScrollTrigger.refresh();
+      });
+    };
+
+    const resizeObserver = new ResizeObserver(refreshScrollLayout);
+    resizeObserver.observe(projectContainer);
+    refreshScrollLayout();
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      resizeObserver.disconnect();
+    };
+  }, [activeTab, showAll]);
+
   // Calculate folder counts for badge tabs
   const folderCounts = useMemo(() => {
     return {
@@ -146,7 +172,6 @@ const Project = () => {
     <main
       ref={containerRef}
       className="mb-12 min-h-[70vh] text-white p-0"
-      id="projects"
     >
       <section className="section-shell flex flex-col justify-center gap-8">
         {/* Header Title Section */}

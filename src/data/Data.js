@@ -15,6 +15,7 @@ export const Bio = {
   email: "aahsinali17@gmail.com",
   phone: +923126627792,
   DOB: "17th August, 2004",
+  today: new Date(),
   roles: [
     "MERN Stack Developer",
     "Web App. Developer",
