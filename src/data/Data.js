@@ -293,6 +293,14 @@ export const certifications = [
     desc: "Earned the Generative AI Application Developer Certificate from UETIANS Lahore Endowment Foundation (USA) in collaboration with HEC and PAKANGELS. Graduated as a Top Performer in Cohort 3.",
     title: "Generative AI Application Developer Certificate",
   },
+   {
+    id: 2,
+    img: "/certificates/langgraph.jfif",
+    school: "LangChain Academy" ,
+    date: "Oct 2026",
+    desc: "Earned the LangGraph Essentials-Typecript Certificate from LangChain Academy, demonstrating proficiency in building and deploying LangGraph applications with TypeScript.",
+    title: "LangGraph Essentials-Typecript",
+  },
 ];
 
 export const projects = [
