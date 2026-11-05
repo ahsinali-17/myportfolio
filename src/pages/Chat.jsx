@@ -109,7 +109,7 @@ const Chat = () => {
               {msg.text}
             </div>
           </div> : <div
-            key={idx}s
+            key={idx}
             className={`w-full mb-2 flex justify-start`}
           >
             <div
