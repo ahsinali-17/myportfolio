@@ -1,8 +1,6 @@
 export const Bio = {
   name: "M. Ahsin Ali",
-  gender: "Male",
-  age: 21,
-  married: false,
+  age: new Date().getFullYear() - 2004,
   location: {
     city: "Wah Cantt",
     country: "Pakistan",
@@ -10,12 +8,10 @@ export const Bio = {
     postalCode: "47040",
     province: "Punjab",
     timezone: "GMT+5",
-    // address: "<iframe src=\"https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3315.8508719120705!2d72.716082!3d33.790349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ3JzI1LjMiTiA3MsKwNDInNTcuOSJF!5e0!3m2!1sen!2s!4v1759232196734!5m2!1sen!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
   },
   email: "aahsinali17@gmail.com",
-  phone: +923126627792,
+  phone: "+923126627792",
   DOB: "17th August, 2004",
-  today: new Date(),
   roles: [
     "MERN Stack Developer",
     "Web App. Developer",
@@ -270,8 +266,9 @@ export const education = [
     img: "/exp_edu/uet.jpg",
     school: "University Of Engineering & Technology, Taxila",
     date: "Oct 2022 - August 2026",
+    status: "Graduated",
     grade: "3.57 CGPA",
-    desc: "I have completed my graduation degree in Computer Science at the University of Engineering & Technology, Taxila, with an overall CGPA of 3.57/4.00. My coursework includes Data Structures, Algorithms, OOP, Databases, Operating Systems, AI/ML, Artificial Neural Networks, Compiler Construction, and Computer Networks.",
+    desc: "Completed my graduation degree in Computer Science at the University of Engineering & Technology, Taxila, with an overall CGPA of 3.57/4.00. My coursework includes Data Structures, Algorithms, OOP, Databases, Operating Systems, AI/ML, Artificial Neural Networks, Compiler Construction, and Computer Networks.",
     degree: "Bachelor of Science in Computer Science",
   },
 ];
@@ -299,7 +296,7 @@ export const certifications = [
     school: "LangChain Academy" ,
     date: "Oct 2026",
     desc: "Earned the LangGraph Essentials-Typecript Certificate from LangChain Academy, demonstrating proficiency in building and deploying LangGraph applications with TypeScript.",
-    title: "LangGraph Essentials-Typecript",
+    title: "LangGraph Essentials - Typecript",
   },
 ];
 
@@ -321,7 +318,7 @@ export const projects = [
     duration: "6 months",
   },
   {
-  id: 15,
+  id: 1,
   title: "CityPulse Triage Hub",
   isAi: true,
   description: "A high-performance smart city infrastructure hub built with Next.js App Router and serverless Neon Postgres, unifying automated AI image triage, geospatial proximity matching, and offline-first PWA field synchronization.",
@@ -350,7 +347,7 @@ export const projects = [
   duration: "3 weeks",
 },
    {
-    id: 1,
+    id: 2,
     title: "WealthBrain AI",
     isAi: true,
     description: "An AI-powered cross-platform financial tracking and intelligent budget management mobile app developed with React Native and Expo. Integrates AI financial analytics, automated budget forecasting, income & expense logging, interactive charts, and transaction history.",
@@ -363,7 +360,7 @@ export const projects = [
     duration: "4 weeks",
   },
   {
-    id: 2,
+    id: 3,
     title: "DocMind AI",
     isAi: true,
     description: "A context-aware AI agent using Retrieval-Augmented Generation (RAG) that enables users to query complex documents and verify answers through a synchronized split-screen interface.",
@@ -371,15 +368,17 @@ export const projects = [
     tags: ["React Js", "RAG", "MongoDb", "Express js", "Vector Embeddings"],
     category: "web app, AI",
     link: "https://github.com/ahsinali-17/docMind-AI",
-    features: ["Real-time AI Defect Detection", 
-      "Secure PDF Audit Generation", 
-      "Batch Image Processing", 
-      "Gemini AI Image Validation"],
+   features: [
+  "PDF document upload",
+  "Context-aware question answering",
+  "Source citation highlighting",
+  "Synchronized PDF and chat view",
+],
     challenges: "Synchronizing the PDF viewer state with AI-generated citations for precise 'click-to-scroll' navigation and managing asynchronous data streams.",
-    duration: "1 weeks",
+    duration: "1 week",
   },
   {
-    id: 3,
+    id: 4,
     title: "Employeed",
     description:
       "A full stack job portal app that enables users to search and apply for job openings, featuring a responsive UI, filterable listings, and an application drawer built using supabase, clerk, React and shadcn.",
@@ -393,7 +392,7 @@ export const projects = [
   },
    
   {
-    id: 4,
+    id: 5,
     title: "connectify",
     description:
       "Built a modern, feature-rich social media platform using MERN. The app includes functionalities such as user authentication, profile management, content creation (posts, images, and videos) and interactive features like likes, comments, add friend and many more With a clean and responsive UI",
@@ -406,7 +405,7 @@ export const projects = [
     duration: "1 month",
   },
   {
-    id: 5,
+    id: 6,
     title: "Get Roofed",
     description: "A feature-rich real estate mobile application built using React Native and Expo. Enables users to explore property listings, filter by location & amenities, manage favorites, and authenticate securely with Clerk and Supabase.",
     image: "/projects/get-roofed.png",
@@ -418,7 +417,7 @@ export const projects = [
     duration: "3 weeks",
   },
   {
-    id: 6,
+    id: 7,
     title: "BackMyProjects",
     description: "A crowdfunding Next.js app, featuring Razorpay payment gateway integration for secure transactions.",
     image: "/projects/backMyProject.jpg",
@@ -430,7 +429,7 @@ export const projects = [
     duration: "2 weeks",
   },
   {
-    id: 7,
+    id: 8,
     title: "Uber-clone",
     description: "Uber-clone is a modern ride-booking web app with real-time location tracking, user authentication, and responsive design.",
     image: "/projects/uber.webp",
@@ -442,7 +441,7 @@ export const projects = [
     duration: "6 weeks",
   },
   {
-    id: 8,
+    id: 9,
     title: "StripeStore",
     description: "StripeWalaStore is a modern e-commerce web app with secure Stripe payments, real-time user authentication, and responsive design.",
     image: "/projects/stripeStore.jfif",
@@ -454,7 +453,7 @@ export const projects = [
     duration: "2 weeks",
   },
   {
-    id: 9,
+    id: 10,
     title: "Password manager",
     description: "A react app which can remember provided passwords along with the username and website's URL...",
     image: "/projects/passwordManager.jpg",
@@ -467,7 +466,7 @@ export const projects = [
   },
  
   {
-    id: 10,
+    id: 11,
     title: "Spotify Clone",
     description: "Spotify clone with a functional music player and responsive audio controls.",
     image: "/projects/spotify.jpg",
@@ -481,7 +480,7 @@ export const projects = [
    
   
   {
-    id: 11,
+    id: 12,
     title: "G72 Studio Clone",
     description: "A high-performance interactive web page replicating the aesthetic G72 Studio design. Built with vanilla HTML/CSS and JavaScript, featuring smooth Locomotive scrolling, GSAP micro-animations, and dynamic visual interactions.",
     image: "/projects/g72.png",
@@ -493,7 +492,7 @@ export const projects = [
     duration: "1 week",
   },
   {
-    id: 12,
+    id: 13,
     title: "Sundown Studio Clone",
     description: "A pixel-perfect clone of the award-winning Sundown Studio website. Built with rich static content, dynamic GSAP animation timelines, custom cursor movements, fluid page transitions, and media sliders.",
     image: "/projects/sundown.png",
@@ -505,7 +504,7 @@ export const projects = [
     duration: "1 week",
   },
    {
-    id: 13,
+    id: 14,
     title: "Wordle-clone",
     description: "Wordle-clone is an interactive web-based word puzzle game built with React and custom feedback logic.",
     image: "/projects/wordle-clone.png",
@@ -517,7 +516,7 @@ export const projects = [
     duration: "1 week",
   },
   {
-    id: 14,
+    id: 15,
     title: "Tic Tac Toe Game",
     description: "An interactive, web-based Tic Tac Toe game built with React. Features single-player mode against an AI opponent powered by the Minimax algorithm, 2-player mode, sound effects, and win/draw animations.",
     image: "/projects/tic-tac-toe.png",
